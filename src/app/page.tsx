@@ -9,5 +9,17 @@ import FAQ from '@/components/sections/FAQ'
 import CTA from '@/components/sections/CTA'
 
 export default function HomePage() {
-  return (<><Hero /><Marquee /><Products /><Process /><Results /><Stats /><About /><FAQ"þ<CTA /></>)
+  return (
+    <>
+      <Hero />
+      <Marquee />
+      <Products />
+      <Process />
+      <Results />
+      <Stats />
+      <About />
+      <FAQ />
+      <CTA />
+    </>
+  )
 }
