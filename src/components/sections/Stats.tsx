@@ -5,6 +5,8 @@ import { useInView } from 'framer-motion'
 import { useT } from '@/hooks/useLanguage'
 import { ui } from '@/lib/translations'
 
+type StatItem = { value: string; label: string }
+
 function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
@@ -28,11 +30,11 @@ function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
 
 export default function Stats() {
   const T = useT()
-  const items = T(ui.stats.items)
+  const items = T(ui.stats.items as { es: readonly StatItem[]; en: readonly StatItem[] })
 
   // Parse value string into number + suffix
   const parsed = items.map((item) => {
-    const match = item.value.match(/^([\d,.]+)(.*)$/)
+    const match = item.value.match(/^([d,.]+)(.*)$/)
     const num = match ? parseInt(match[1].replace(/[,.]/g, ''), 10) : 0
     const suffix = match ? match[2] : ''
     return { ...item, num, suffix }
@@ -55,4 +57,4 @@ export default function Stats() {
       </div>
     </section>
   )
-}
+                }
