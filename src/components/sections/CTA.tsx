@@ -12,7 +12,16 @@ export default function CTA() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-10%' })
 
-  const formT = T(ui.cta.form)
+  const formT = {
+    name: T(ui.cta.form.name),
+    email: T(ui.cta.form.email),
+    phone: T(ui.cta.form.phone),
+    message: T(ui.cta.form.message),
+    submit: T(ui.cta.form.submit),
+    sending: T(ui.cta.form.sending),
+    success: T(ui.cta.form.success),
+    error: T(ui.cta.form.error),
+  }
 
   const [form, setForm] = useState<Omit<ContactFormData, 'lang'>>({
     name: '',
@@ -83,7 +92,7 @@ export default function CTA() {
               transition={{ delay: 0.3 }}
               href={formatWhatsAppUrl(
                 process.env.NEXT_PUBLIC_WHATSAPP || '573043838031',
-                'Hola, me interesa conocer más sobre sus carillas dentales.'
+                'Hola, me interesa conocer mas sobre sus carillas dentales.'
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -105,7 +114,7 @@ export default function CTA() {
             {status === 'success' ? (
               <div className="text-center py-16">
                 <div className="w-12 h-12 border border-gold flex items-center justify-center mx-auto mb-6">
-                  <span className="text-gold text-xl">✓</span>
+                  <span className="text-gold text-xl">&#10003;</span>
                 </div>
                 <p className="font-body text-sm text-cream/70">{formT.success}</p>
               </div>
