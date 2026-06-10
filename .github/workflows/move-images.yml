@@ -1,0 +1,42 @@
+name: Move images to public/img
+
+on:
+  workflow_dispatch:
+
+  permissions:
+    contents: write
+
+    jobs:
+      move-images:
+          runs-on: ubuntu-latest
+              steps:
+                    - uses: actions/checkout@v4
+
+                          - name: Create public/img directory
+                                  run: mkdir -p public/img
+
+                                        - name: Move images with correct names
+                                                run: |
+                                                          # UUID files
+                                                                    cp "0502B313-F6B6-46C6-B9D2-1E6444DA77F8_L0_001-8_25_2025, 11_32_27 a.m..jpg" public/img/hero.jpg
+                                                                              cp "280C35C8-1C48-4C03-A87F-9C51AA8C7188_L0_001-14_1_2026, 1_14_01 p.m..jpg" public/img/proceso-2.jpg
+                                                                                        cp "ACDEEBE5-B9DB-4370-BE55-88B1DF0AC2E6_L0_001-15_1_2026, 3_06_32 p.m..jpg" public/img/proceso-3.jpg
+                                                                                                  cp "DF8FA3B8-5FEB-439A-8541-2536BFAFA31C_L0_001-14_1_2026, 1_12_59 p.m..jpg" public/img/feldespato.jpg
+                                                                                                            cp "ED3D80C5-7253-44A8-A6B0-9E4FC42DD897_L0_001-15_1_2026, 9_39_32 a.m..jpg" public/img/hibridas.jpg
+                                                                                                                      # Named files
+                                                                                                                                cp estratificada.jpg public/img/estratificadas.jpg
+                                                                                                                                          cp monolitica.jpg public/img/monoliticas-new.jpg
+                                                                                                                                                    cp IMG_1240.jpg public/img/equipo.jpg
+                                                                                                                                                              cp IMG_7845.jpg public/img/r4.jpg
+                                                                                                                                                                        cp IMG_2018.JPG.jpeg public/img/r6.jpg
+                                                                                                                                                                                  cp "PHOTO-2026-04-01-11-24-28.jpg" public/img/proceso-1.jpg
+                                                                                                                                                                                            cp "PHOTO-2026-05-09-07-34-06.jpg" public/img/resultado-1.jpg
+                                                                                                                                                                                            
+                                                                                                                                                                                                  - name: Commit images
+                                                                                                                                                                                                          run: |
+                                                                                                                                                                                                                    git config user.name "github-actions[bot]"
+                                                                                                                                                                                                                              git config user.email "github-actions[bot]@users.noreply.github.com"
+                                                                                                                                                                                                                                        git add public/img/
+                                                                                                                                                                                                                                                  git commit -m "Add images to public/img/ for Next.js serving"
+                                                                                                                                                                                                                                                            git push
+                                                                                                                                                                                                                                                            
