@@ -5,7 +5,7 @@ import { ui } from '@/lib/translations'
 
 export default function Marquee() {
   const T = useT()
-  const items = T(ui.marquee.items)
+  const items = T(ui.marquee.items as { es: readonly string[]; en: readonly string[] })
   // Duplicate for seamless loop
   const all = [...items, ...items]
 
@@ -17,7 +17,7 @@ export default function Marquee() {
             <span className="font-display text-sm md:text-base tracking-[0.3em] text-gold uppercase">
               {item}
             </span>
-            <span className="text-gold/30 text-xs">◆</span>
+            <span className="text-gold/30 text-xs">&#9670;</span>
           </span>
         ))}
       </div>
