@@ -6,7 +6,7 @@ import { formatWhatsAppUrl } from '@/lib/utils'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
-const HERO_VIDEO = '/img/training/hero-training.mp4'
+const HERO_VIDEO = '/img/training/video-portada.mp4'
 const VIDEOS = [
   { src: '/img/training/video-ceramica.mp4', label: 'Cerámica 4K — Laboratorio en Vivo' },
   { src: '/img/training/video-zirconia.mp4', label: 'Prótesis Híbrida en Zirconia' },
@@ -405,6 +405,134 @@ export default function EntrenaPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIOS ── */}
+      <section className="py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        </div>
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-gold" />
+              <span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Lo Que Dicen Quienes Ya Vivieron la Experiencia</span>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="font-display text-4xl md:text-5xl text-cream mb-16 leading-tight">
+              Resultados que <span className="text-gold">Hablan Solos</span>
+            </h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Video testimonio */}
+            <Reveal delay={0.15}>
+              <div className="relative overflow-hidden border border-gold/20 group">
+                <video
+                  className="w-full aspect-[9/16] md:aspect-video object-cover"
+                  src="/img/training/testimonio.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/img/training/photo-04.jpg"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="font-body text-[10px] tracking-widest text-gold uppercase bg-void/70 backdrop-blur-sm px-3 py-1.5 border border-gold/20">Testimonio Real</span>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Citas */}
+            <div className="space-y-10">
+              <Reveal delay={0.2}>
+                <div className="relative border-l-2 border-gold/40 pl-8 py-2">
+                  <div className="absolute -left-3 top-0 text-gold text-5xl font-display leading-none opacity-40">"</div>
+                  <p className="font-display text-xl md:text-2xl text-cream leading-relaxed mb-6 italic">
+                    Vine sin saber qué esperar y salí con una técnica que transformó por completo mi trabajo en el laboratorio. Yesid no solo enseña cerámica — te cambia la forma de ver cada caso.
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-8 h-px bg-gold/40" />
+                    <div>
+                      <div className="font-body text-sm text-gold tracking-widest uppercase">Ceramista Participante</div>
+                      <div className="font-body text-xs text-mist/40 uppercase tracking-widest">Programa Cerámica Estratificada</div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.3}>
+                <div className="relative border-l-2 border-gold/20 pl-8 py-2">
+                  <div className="absolute -left-3 top-0 text-gold text-5xl font-display leading-none opacity-25">"</div>
+                  <p className="font-display text-lg text-cream/80 leading-relaxed mb-6 italic">
+                    La formación con Yesid es de otro nivel. Cada detalle, cada corrección en tiempo real — uno siente que está aprendiendo de alguien que realmente domina lo que enseña. Los cupos son pocos y es lo más valioso del curso.
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-8 h-px bg-gold/40" />
+                    <div>
+                      <div className="font-body text-sm text-gold tracking-widest uppercase">Odontóloga Restauradora</div>
+                      <div className="font-body text-xs text-mist/40 uppercase tracking-widest">Programa Disilicato de Litio</div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.4}>
+                <div className="flex gap-1 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="font-body text-xs text-mist/40 tracking-widest uppercase">Ediciones anteriores · 100% cupos agotados</p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── REDES SOCIALES ── */}
+      <section className="py-24 px-6 bg-jet/30 border-y border-gold/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <Reveal>
+            <div className="inline-flex items-center gap-4 mb-6">
+              <div className="w-12 h-px bg-gold/40" />
+              <span className="font-body text-xs tracking-[0.3em] text-gold uppercase">Síguenos</span>
+              <div className="w-12 h-px bg-gold/40" />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="font-display text-3xl md:text-4xl text-cream mb-4 leading-tight">
+              Vive el Proceso<br /><span className="text-gold">Desde Adentro</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="font-body text-mist/55 leading-relaxed mb-10 max-w-xl mx-auto">
+              Casos reales, técnicas en vivo y el día a día de uno de los laboratorios de carillas cerámicas más reconocidos de Colombia. Síguenos en Instagram y mantente al tanto de las próximas fechas de entrenamiento.
+            </p>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <a
+              href="https://www.instagram.com/naturalveneers.sas/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-4 border border-gold/30 px-10 py-5 hover:border-gold hover:bg-gold/5 transition-all duration-400"
+            >
+              <svg className="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+              <div className="text-left">
+                <div className="font-body text-sm text-cream tracking-widest uppercase group-hover:text-gold transition-colors duration-300">@naturalveneers.sas</div>
+                <div className="font-body text-[10px] text-mist/40 tracking-widest uppercase">Instagram · Síguenos ahora</div>
+              </div>
+              <svg className="w-4 h-4 text-gold/50 group-hover:text-gold group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </Reveal>
         </div>
       </section>
 
