@@ -69,16 +69,16 @@ export const ui = {
   stats: {
     items: {
       es: [
-        { value: '8+', label: 'Años de Experiencia' },
-        { value: '2.400+', label: 'Carillas Fabricadas' },
-        { value: '98%', label: 'Satisfacción Clínica' },
-        { value: '12+', label: 'Países Exportados' },
+        { value: '6+', label: 'Años de Experiencia' },
+        { value: '4.000+', label: 'Carillas Fabricadas' },
+        { value: '96%', label: 'Satisfacción Clínica' },
+        { value: '5+', label: 'Países Exportados' },
       ],
       en: [
-        { value: '8+', label: 'Years of Experience' },
-        { value: '2,400+', label: 'Veneers Crafted' },
-        { value: '98%', label: 'Clinical Satisfaction' },
-        { value: '12+', label: 'Export Countries' },
+        { value: '6+', label: 'Years of Experience' },
+        { value: '4,000+', label: 'Veneers Crafted' },
+        { value: '96%', label: 'Clinical Satisfaction' },
+        { value: '5+', label: 'Export Countries' },
       ],
     },
   },
@@ -211,14 +211,14 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     questionEs: '¿Cuál es el tiempo de entrega?',
     questionEn: 'What is the turnaround time?',
-    answerEs: 'El tiempo estándar es 10-15 días hábiles desde la recepción del modelo. Para casos urgentes ofrecemos servicio express de 7 días hábiles con coordinación previa.',
-    answerEn: 'Standard turnaround is 10-15 business days from model receipt. For urgent cases we offer an express 7-business-day service with prior coordination.',
+    answerEs: 'El tiempo estándar es de 2 a 4 días hábiles desde la recepción del modelo.',
+    answerEn: 'Standard turnaround is 2 to 4 business days from model receipt.',
   },
   {
     questionEs: '¿Trabajan con clínicos fuera de Colombia?',
     questionEn: 'Do you work with clinicians outside Colombia?',
-    answerEs: 'Sí, exportamos a más de 12 países. Tenemos experiencia en envíos internacionales con embalaje especializado y seguro para trabajo dental.',
-    answerEn: 'Yes, we export to over 12 countries. We have experience in international shipping with specialized packaging and dental work insurance.',
+    answerEs: 'Sí, trabajamos con clínicos en más de 5 países. Tenemos experiencia en envíos internacionales con embalaje especializado y seguro para trabajo dental.',
+    answerEn: 'Yes, we work with clinicians in more than 5 countries. We have experience in international shipping with specialized packaging and dental work insurance.',
   },
   {
     questionEs: '¿Qué información necesitan para iniciar un caso?',
