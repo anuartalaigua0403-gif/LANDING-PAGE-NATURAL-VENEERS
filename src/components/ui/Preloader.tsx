@@ -7,12 +7,13 @@ const LETTERS = 'NATURAL VENEERS'.split('')
 
 export default function Preloader() {
   const [visible, setVisible] = useState(true)
-  const [phase, setPhase] = useState<'letters' | 'wipe'>('letters')
+  const [phase, setPhase] = useState<'letters' | 'shimmer' | 'wipe'>('letters')
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('wipe'), 1800)
-    const t2 = setTimeout(() => setVisible(false), 2600)
-    return () => { clearTimeout(t1); clearTimeout(t2) }
+    const t0 = setTimeout(() => setPhase('shimmer'), 1300)
+    const t1 = setTimeout(() => setPhase('wipe'), 1900)
+    const t2 = setTimeout(() => setVisible(false), 2700)
+    return () => { clearTimeout(t0); clearTimeout(t1); clearTimeout(t2) }
   }, [])
 
   return (
@@ -24,7 +25,7 @@ export default function Preloader() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           exit={{ opacity: 0 }}
         >
-          <div className="flex gap-1 overflow-hidden">
+          <div className="relative flex gap-1 overflow-visible">
             {LETTERS.map((letter, i) => (
               <motion.span
                 key={i}
@@ -40,6 +41,24 @@ export default function Preloader() {
                 {letter === ' ' ? ' ' : letter}
               </motion.span>
             ))}
+
+            {/* Destello dorado suave — aparece después de que las letras están visibles */}
+            <AnimatePresence>
+              {phase === 'shimmer' && (
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(105deg, transparent 20%, rgba(240,204,106,0.0) 35%, rgba(255,240,180,0.22) 48%, rgba(201,162,39,0.18) 52%, rgba(240,204,106,0.0) 65%, transparent 80%)',
+                    backgroundSize: '250% 100%',
+                  }}
+                  initial={{ backgroundPosition: '-100% 0%' }}
+                  animate={{ backgroundPosition: '200% 0%' }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.55, ease: 'easeInOut' }}
+                />
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
       )}
