@@ -6,24 +6,22 @@ import { formatWhatsAppUrl } from '@/lib/utils'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
-/* ─── Media paths (coloca los archivos en public/img/training/) ─── */
-const HERO_VIDEO   = '/img/training/hero-training.mp4'
+const HERO_VIDEO = '/img/training/hero-training.mp4'
 const VIDEOS = [
-  { src: '/img/training/video-ceramica.mp4',   label: 'Cerámica 4K — Laboratorio en Vivo' },
-  { src: '/img/training/video-zirconia.mp4',   label: 'Prótesis Híbrida en Zirconia' },
+  { src: '/img/training/video-ceramica.mp4', label: 'Cerámica 4K — Laboratorio en Vivo' },
+  { src: '/img/training/video-zirconia.mp4', label: 'Prótesis Híbrida en Zirconia' },
 ]
 const PHOTOS = [
-  { src: '/img/training/photo-01.jpg', alt: 'Carillas cerámicas Amber LT A1 — 1.888 reacciones' },
+  { src: '/img/training/photo-01.jpg', alt: 'Carillas cerámicas Amber LT A1' },
   { src: '/img/training/photo-02.jpg', alt: 'Amber Press LT W2 — Proyecto enviado a Miami' },
   { src: '/img/training/photo-03.jpg', alt: 'Carillas estilo APA — Natural Veneers' },
 ]
 
-/* ─── Datos ──────────────────────────────── */
 const STATS = [
-  { value: '8+',   label: 'Años de Experiencia' },
-  { value: '3',    label: 'Países de Formación' },
+  { value: '8+', label: 'Años de Experiencia' },
+  { value: '3', label: 'Países de Formación' },
   { value: '100%', label: 'Cupos Prev. Agotados' },
-  { value: '12+',  label: 'Países Exportación' },
+  { value: '12+', label: 'Países Exportación' },
 ]
 
 const PROGRAMS = [
@@ -81,23 +79,17 @@ const INTERNATIONAL = [
   {
     country: 'México',
     flag: '🇲🇽',
-    event: 'Congreso Latinoamericano de Prótesis Dental',
-    year: '2019',
     desc: 'Formación avanzada en cerámica estratificada con maestros ceramistas de referencia latinoamericana.',
   },
   {
     country: 'Alemania',
     flag: '🇩🇪',
-    event: 'IDS International Dental Show · Colonia',
-    year: '2021',
-    desc: 'Participación en el evento dental más importante del mundo y actualización técnica con casas fabricantes VITA y Ivoclar.',
+    desc: 'Actualización técnica con casas fabricantes VITA e Ivoclar en el epicentro de la innovación dental mundial.',
   },
   {
     country: 'Brasil',
     flag: '🇧🇷',
-    event: 'Masterclass VITA Zahnfabrik · São Paulo',
-    year: '2023',
-    desc: 'Certificación directa con instructores de VITA en técnicas avanzadas de caracterización y maquillado cerámico.',
+    desc: 'Certificación en técnicas avanzadas de caracterización y maquillado cerámico con instructores internacionales.',
   },
 ]
 
@@ -124,7 +116,6 @@ const METHODOLOGY = [
   },
 ]
 
-/* ─── Reveal helper ──────────────────────── */
 function Reveal({
   children,
   delay = 0,
@@ -149,7 +140,6 @@ function Reveal({
   )
 }
 
-/* ─── Page ───────────────────────────────── */
 export default function EntrenaPage() {
   const heroVideoRef = useRef<HTMLVideoElement>(null)
   const [activeProgram, setActiveProgram] = useState<string | null>(null)
@@ -165,9 +155,6 @@ export default function EntrenaPage() {
 
   return (
     <>
-      {/* ══════════════════════════════════════════
-          HERO — Video cinemático de entrenamiento
-      ══════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-end pb-24 overflow-hidden">
         <video
           ref={heroVideoRef}
@@ -178,11 +165,8 @@ export default function EntrenaPage() {
           loop
           playsInline
         />
-        {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-void/95 via-void/65 to-void/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-void/50" />
-
-        {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
           <motion.div
             className="flex items-center gap-3 mb-6"
@@ -195,7 +179,6 @@ export default function EntrenaPage() {
               Natural Veneers SAS · Programa de Formación Técnica
             </span>
           </motion.div>
-
           <h1 className="font-display leading-none mb-6">
             <motion.span
               className="block text-cream text-5xl md:text-7xl lg:text-8xl"
@@ -214,7 +197,6 @@ export default function EntrenaPage() {
               de la Cerámica
             </motion.span>
           </h1>
-
           <motion.p
             className="font-body text-base md:text-lg text-mist/80 max-w-xl leading-relaxed mb-10"
             initial={{ opacity: 0, y: 30 }}
@@ -224,48 +206,26 @@ export default function EntrenaPage() {
             Entrenamiento técnico intensivo para ceramistas y odontólogos restauradores que exigen resultados
             de clase mundial. Cerámica estratificada, disilicato y zirconio con el estándar Natural Veneers.
           </motion.p>
-
           <motion.div
             className="flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.75, duration: 0.8, ease }}
           >
-            <a
-              href="#reserva"
-              className="px-8 py-4 bg-gold text-void font-body text-xs tracking-widest uppercase font-semibold hover:bg-gold-bright transition-colors duration-300"
-            >
+            <a href="#reserva" className="px-8 py-4 bg-gold text-void font-body text-xs tracking-widest uppercase font-semibold hover:bg-gold-bright transition-colors duration-300">
               Reservar Mi Cupo
             </a>
-            <a
-              href="#programas"
-              className="px-8 py-4 border border-gold/40 text-gold font-body text-xs tracking-widest uppercase hover:border-gold hover:bg-gold/5 transition-all duration-300"
-            >
+            <a href="#programas" className="px-8 py-4 border border-gold/40 text-gold font-body text-xs tracking-widest uppercase hover:border-gold hover:bg-gold/5 transition-all duration-300">
               Ver Programas
             </a>
           </motion.div>
         </div>
-
-        {/* Scroll hint */}
-        <motion.div
-          className="absolute bottom-8 right-8 flex flex-col items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ delay: 1.5 }}
-        >
-          <span
-            className="font-body text-[9px] text-cream uppercase"
-            style={{ writingMode: 'vertical-rl', letterSpacing: '0.2em' }}
-          >
-            Scroll
-          </span>
+        <motion.div className="absolute bottom-8 right-8 flex flex-col items-center gap-2" initial={{ opacity: 0 }} animate={{ opacity: 0.4 }} transition={{ delay: 1.5 }}>
+          <span className="font-body text-[9px] text-cream uppercase" style={{ writingMode: 'vertical-rl', letterSpacing: '0.2em' }}>Scroll</span>
           <div className="w-px h-12 bg-gradient-to-b from-gold/60 to-transparent animate-pulse" />
         </motion.div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          STATS BAR
-      ══════════════════════════════════════════ */}
       <section className="border-y border-gold/10 bg-jet/60 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
           {STATS.map((s, i) => (
@@ -279,64 +239,24 @@ export default function EntrenaPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          PROGRAMS
-      ══════════════════════════════════════════ */}
       <section id="programas" className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-gold" />
-              <span className="font-body text-xs tracking-[0.25em] text-gold uppercase">
-                Certificaciones Disponibles
-              </span>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-display text-4xl md:text-6xl text-cream mb-4 leading-tight">
-              Tres Especialidades,<br />
-              <span className="text-gold">Un Solo Estándar</span>
-            </h2>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="font-body text-mist/65 max-w-xl mb-16 leading-relaxed">
-              Cada programa está diseñado exclusivamente para técnicos dentales y odontólogos restauradores
-              que buscan técnica reproducible y resultados de alta estética cerámica.
-            </p>
-          </Reveal>
-
+          <Reveal><div className="flex items-center gap-3 mb-4"><div className="w-8 h-px bg-gold" /><span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Certificaciones Disponibles</span></div></Reveal>
+          <Reveal delay={0.1}><h2 className="font-display text-4xl md:text-6xl text-cream mb-4 leading-tight">Tres Especialidades,<br /><span className="text-gold">Un Solo Estándar</span></h2></Reveal>
+          <Reveal delay={0.2}><p className="font-body text-mist/65 max-w-xl mb-16 leading-relaxed">Cada programa está diseñado exclusivamente para técnicos dentales y odontólogos restauradores que buscan técnica reproducible y resultados de alta estética cerámica.</p></Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {PROGRAMS.map((prog, i) => (
               <Reveal key={prog.id} delay={i * 0.12}>
-                <div
-                  className="group relative border border-gold/10 bg-jet/40 p-8 cursor-pointer hover:border-gold/40 transition-all duration-500 overflow-hidden h-full flex flex-col"
-                  onMouseEnter={() => setActiveProgram(prog.id)}
-                  onMouseLeave={() => setActiveProgram(null)}
-                >
-                  {/* Glow */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent pointer-events-none"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: activeProgram === prog.id ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-
+                <div className="group relative border border-gold/10 bg-jet/40 p-8 cursor-pointer hover:border-gold/40 transition-all duration-500 overflow-hidden h-full flex flex-col" onMouseEnter={() => setActiveProgram(prog.id)} onMouseLeave={() => setActiveProgram(null)}>
+                  <motion.div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: activeProgram === prog.id ? 1 : 0 }} transition={{ duration: 0.3 }} />
                   <div className="relative z-10 flex flex-col h-full">
-                    {/* Header */}
                     <div className="flex justify-between items-start mb-6">
-                      <span className="font-display text-5xl text-gold/20 group-hover:text-gold/35 transition-colors duration-300">
-                        {prog.num}
-                      </span>
-                      <span className="font-body text-[10px] tracking-widest text-gold/60 uppercase border border-gold/20 px-2 py-1">
-                        {prog.hours}
-                      </span>
+                      <span className="font-display text-5xl text-gold/20 group-hover:text-gold/35 transition-colors duration-300">{prog.num}</span>
+                      <span className="font-body text-[10px] tracking-widest text-gold/60 uppercase border border-gold/20 px-2 py-1">{prog.hours}</span>
                     </div>
-
                     <h3 className="font-display text-2xl text-cream mb-1">{prog.title}</h3>
                     <p className="font-body text-xs text-gold/65 tracking-widest uppercase mb-4">{prog.sub}</p>
                     <p className="font-body text-sm text-mist/60 leading-relaxed mb-6">{prog.desc}</p>
-
-                    {/* Topics */}
                     <div className="space-y-2 flex-1">
                       {prog.topics.map((topic) => (
                         <div key={topic} className="flex items-start gap-2">
@@ -345,18 +265,9 @@ export default function EntrenaPage() {
                         </div>
                       ))}
                     </div>
-
-                    {/* Footer */}
                     <div className="mt-8 pt-6 border-t border-gold/10 flex justify-between items-center">
-                      <span className="font-body text-[10px] text-mist/35 uppercase tracking-widest">
-                        {prog.level}
-                      </span>
-                      <a
-                        href="#reserva"
-                        className="font-body text-xs text-gold tracking-widest uppercase hover:text-gold-bright inline-flex items-center gap-1 transition-all duration-300 group-hover:gap-2"
-                      >
-                        Inscribirme <span>→</span>
-                      </a>
+                      <span className="font-body text-[10px] text-mist/35 uppercase tracking-widest">{prog.level}</span>
+                      <a href="#reserva" className="font-body text-xs text-gold tracking-widest uppercase hover:text-gold-bright inline-flex items-center gap-1 transition-all duration-300 group-hover:gap-2">Inscribirme <span>→</span></a>
                     </div>
                   </div>
                 </div>
@@ -366,27 +277,19 @@ export default function EntrenaPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          CEO — YESID GUERRERO
-      ══════════════════════════════════════════ */}
       <section className="py-32 px-6 bg-jet/20 border-y border-gold/10">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
-
-            {/* Photo */}
             <Reveal className="relative">
               <div className="relative aspect-[4/5] bg-void border border-gold/20 overflow-hidden">
                 <img
-                  src={PHOTOS[0].src}
+                  src="/img/training/yesid-guerrero.jpg"
                   alt="Yesid Guerrero — Director Técnico Natural Veneers"
-                  className="w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                  className="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-all duration-700"
                 />
-                {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-gold" />
                 <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold" />
               </div>
-
-              {/* Floating badge */}
               <motion.div
                 className="absolute -bottom-6 -right-6 md:-right-8 bg-void border border-gold/30 p-5 backdrop-blur-sm"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -399,30 +302,16 @@ export default function EntrenaPage() {
               </motion.div>
             </Reveal>
 
-            {/* Bio */}
             <div>
-              <Reveal>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-px bg-gold" />
-                  <span className="font-body text-xs tracking-[0.25em] text-gold uppercase">
-                    Instructor Principal
-                  </span>
-                </div>
-              </Reveal>
-
+              <Reveal><div className="flex items-center gap-3 mb-4"><div className="w-8 h-px bg-gold" /><span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Instructor Principal</span></div></Reveal>
               <Reveal delay={0.1}>
                 <h2 className="font-display text-4xl md:text-5xl text-cream mb-1">Yesid Guerrero</h2>
-                <p className="font-body text-sm text-gold/65 tracking-[0.15em] uppercase mb-8">
-                  Ceramista Master · Fundador &amp; Director Técnico
-                </p>
+                <p className="font-body text-sm text-gold/65 tracking-[0.15em] uppercase mb-8">Ceramista Master · Fundador &amp; Director Técnico</p>
               </Reveal>
-
               <Reveal delay={0.2}>
                 <p className="font-body text-mist/70 leading-relaxed mb-5">
-                  Con más de <strong className="text-cream font-medium">8 años de experiencia</strong> en laboratorio dental de alta estética en Colombia, Yesid Guerrero ha construido su dominio técnico en los centros de formación cerámica más exigentes del mundo. Su filosofía es clara:{' '}
-                  <em className="text-gold/80 not-italic">
-                    ningún ceramista ni odontólogo debería conformarse con resultados mediocres cuando la técnica correcta está disponible.
-                  </em>
+                  Con más de <strong className="text-cream font-medium">8 años de experiencia</strong> en laboratorio dental de alta estética en Colombia, Yesid Guerrero ha construido su dominio técnico visitando los centros de formación cerámica más exigentes del mundo. Su filosofía es clara:{' '}
+                  <em className="text-gold/80 not-italic">ningún ceramista ni odontólogo debería conformarse con resultados mediocres cuando la técnica correcta está disponible.</em>
                 </p>
                 <p className="font-body text-mist/70 leading-relaxed mb-5">
                   Fundó Natural Veneers SAS en Barranquilla con la convicción de que Colombia puede —y debe— producir cerámica dental reconocida a nivel mundial. Hoy exporta trabajo a más de{' '}
@@ -432,12 +321,8 @@ export default function EntrenaPage() {
                   Sus entrenamientos son conocidos por una premisa: los cupos se agotan antes de que se abra la convocatoria pública. Porque quienes ya han pasado por sus manos, regresan y traen colegas.
                 </p>
               </Reveal>
-
-              {/* International */}
               <Reveal delay={0.3}>
-                <h3 className="font-body text-xs tracking-[0.2em] text-gold/55 uppercase mb-5">
-                  Formación &amp; Reconocimiento Internacional
-                </h3>
+                <h3 className="font-body text-xs tracking-[0.2em] text-gold/55 uppercase mb-5">Formación &amp; Reconocimiento Internacional</h3>
                 <div className="space-y-5">
                   {INTERNATIONAL.map((item, i) => (
                     <motion.div
@@ -450,11 +335,8 @@ export default function EntrenaPage() {
                     >
                       <span className="text-2xl mt-0.5">{item.flag}</span>
                       <div>
-                        <div className="font-body text-sm text-cream font-medium">
-                          {item.country} · <span className="text-gold/70">{item.year}</span>
-                        </div>
-                        <div className="font-body text-xs text-mist/50 mb-1">{item.event}</div>
-                        <div className="font-body text-xs text-mist/35 leading-relaxed">{item.desc}</div>
+                        <div className="font-body text-sm text-cream font-medium mb-1">{item.country}</div>
+                        <div className="font-body text-xs text-mist/40 leading-relaxed">{item.desc}</div>
                       </div>
                     </motion.div>
                   ))}
@@ -465,64 +347,31 @@ export default function EntrenaPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          GALERÍA — Fotos + Videos
-      ══════════════════════════════════════════ */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-gold" />
-              <span className="font-body text-xs tracking-[0.25em] text-gold uppercase">
-                Nuestro Trabajo en Vivo
-              </span>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-display text-4xl md:text-5xl text-cream mb-16 leading-tight">
-              El Estándar que <span className="text-gold">Enseñamos</span>
-            </h2>
-          </Reveal>
-
-          {/* 3 Photos */}
+          <Reveal><div className="flex items-center gap-3 mb-4"><div className="w-8 h-px bg-gold" /><span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Nuestro Trabajo en Vivo</span></div></Reveal>
+          <Reveal delay={0.1}><h2 className="font-display text-4xl md:text-5xl text-cream mb-16 leading-tight">El Estándar que <span className="text-gold">Enseñamos</span></h2></Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             {PHOTOS.map((photo, i) => (
               <Reveal key={photo.src} delay={i * 0.1}>
                 <div className="relative aspect-square overflow-hidden group">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-full object-cover grayscale-[25%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                  />
+                  <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover grayscale-[25%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <p className="font-body text-xs text-gold tracking-widest uppercase leading-relaxed">
-                      {photo.alt}
-                    </p>
+                    <p className="font-body text-xs text-gold tracking-widest uppercase leading-relaxed">{photo.alt}</p>
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
-
-          {/* 2 Videos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {VIDEOS.map((video, i) => (
               <Reveal key={video.src} delay={i * 0.15}>
                 <div className="relative aspect-video overflow-hidden group">
-                  <video
-                    className="w-full h-full object-cover"
-                    src={video.src}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                  />
+                  <video className="w-full h-full object-cover" src={video.src} autoPlay muted loop playsInline />
                   <div className="absolute inset-0 bg-void/25 group-hover:bg-void/5 transition-colors duration-500" />
                   <div className="absolute bottom-4 left-4">
-                    <span className="font-body text-xs text-gold/80 tracking-widest uppercase bg-void/60 backdrop-blur-sm px-3 py-1.5">
-                      {video.label}
-                    </span>
+                    <span className="font-body text-xs text-gold/80 tracking-widest uppercase bg-void/60 backdrop-blur-sm px-3 py-1.5">{video.label}</span>
                   </div>
                 </div>
               </Reveal>
@@ -531,32 +380,17 @@ export default function EntrenaPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          METODOLOGÍA
-      ══════════════════════════════════════════ */}
       <section className="py-32 px-6 bg-jet/20 border-y border-gold/10">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-start">
-
             <div>
               <Reveal>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-px bg-gold" />
-                  <span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Metodología</span>
-                </div>
-                <h2 className="font-display text-4xl md:text-5xl text-cream mb-6 leading-tight">
-                  Aprender Haciendo,<br />
-                  <span className="text-gold">No Observando</span>
-                </h2>
-                <p className="font-body text-mist/65 leading-relaxed mb-5">
-                  Cada sesión es <strong className="text-cream font-medium">100% práctica</strong>. Trabajas directamente sobre el material desde el primer momento, corrigiendo errores en tiempo real bajo la guía directa de Yesid. Sin presentaciones teóricas interminables. Sin atajos.
-                </p>
-                <p className="font-body text-mist/65 leading-relaxed">
-                  Los grupos son reducidos —<strong className="text-cream font-medium">máximo 8 participantes</strong>— para garantizar que cada ceramista u odontólogo salga con técnica propia, con criterio para tomar decisiones clínicas, no solo con conocimiento conceptual.
-                </p>
+                <div className="flex items-center gap-3 mb-4"><div className="w-8 h-px bg-gold" /><span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Metodología</span></div>
+                <h2 className="font-display text-4xl md:text-5xl text-cream mb-6 leading-tight">Aprender Haciendo,<br /><span className="text-gold">No Observando</span></h2>
+                <p className="font-body text-mist/65 leading-relaxed mb-5">Cada sesión es <strong className="text-cream font-medium">100% práctica</strong>. Trabajas directamente sobre el material desde el primer momento, corrigiendo errores en tiempo real bajo la guía directa de Yesid. Sin presentaciones teóricas interminables. Sin atajos.</p>
+                <p className="font-body text-mist/65 leading-relaxed">Los grupos son reducidos —<strong className="text-cream font-medium">máximo 8 participantes</strong>— para garantizar que cada ceramista u odontólogo salga con técnica propia, con criterio para tomar decisiones clínicas, no solo con conocimiento conceptual.</p>
               </Reveal>
             </div>
-
             <div className="space-y-0">
               {METHODOLOGY.map((item, i) => (
                 <Reveal key={item.title} delay={i * 0.1}>
@@ -574,90 +408,35 @@ export default function EntrenaPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          CTA — RESERVA TU CUPO
-      ══════════════════════════════════════════ */}
       <section id="reserva" className="py-40 px-6 relative overflow-hidden">
-        {/* Ambient glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5"
-            style={{ background: 'radial-gradient(circle, #C9A227 0%, transparent 70%)' }}
-          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5" style={{ background: 'radial-gradient(circle, #C9A227 0%, transparent 70%)' }} />
         </div>
-
         <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <Reveal>
-            <div className="inline-flex items-center gap-4 mb-8">
-              <div className="w-12 h-px bg-gold/50" />
-              <span className="font-body text-xs tracking-[0.3em] text-gold uppercase">
-                Cupos Limitados · Barranquilla, Colombia
-              </span>
-              <div className="w-12 h-px bg-gold/50" />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-cream mb-4 leading-none">
-              Reserva Tu Cupo<br />
-              <span className="text-gold">Hoy Mismo</span>
-            </h2>
-          </Reveal>
-
+          <Reveal><div className="inline-flex items-center gap-4 mb-8"><div className="w-12 h-px bg-gold/50" /><span className="font-body text-xs tracking-[0.3em] text-gold uppercase">Cupos Limitados · Barranquilla, Colombia</span><div className="w-12 h-px bg-gold/50" /></div></Reveal>
+          <Reveal delay={0.1}><h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-cream mb-4 leading-none">Reserva Tu Cupo<br /><span className="text-gold">Hoy Mismo</span></h2></Reveal>
           <Reveal delay={0.2}>
-            <p className="font-body text-mist/65 leading-relaxed mb-4 max-w-lg mx-auto">
-              Los cupos se agotan rápido —la edición anterior cerró inscripciones en horas. Si estás listo para llevar tu técnica cerámica a un nivel que tus casos requieren, escríbenos ahora.
-            </p>
-            <p className="font-body text-sm text-gold/70 mb-12 max-w-lg mx-auto">
-              Asegura tu lugar · Confirma tu programa · Reserva tu fecha
-            </p>
+            <p className="font-body text-mist/65 leading-relaxed mb-4 max-w-lg mx-auto">Los cupos se agotan rápido —la edición anterior cerró inscripciones en horas. Si estás listo para llevar tu técnica cerámica a un nivel que tus casos requieren, escríbenos ahora.</p>
+            <p className="font-body text-sm text-gold/70 mb-12 max-w-lg mx-auto">Asegura tu lugar · Confirma tu programa · Reserva tu fecha</p>
           </Reveal>
-
           <Reveal delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-              {/* Primary CTA — WhatsApp */}
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative px-10 py-5 bg-gold text-void font-body text-sm tracking-widest uppercase font-semibold hover:bg-gold-bright transition-colors duration-300 flex items-center justify-center gap-3 overflow-hidden"
-              >
-                <motion.span
-                  className="absolute inset-0 bg-gold-bright"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group relative px-10 py-5 bg-gold text-void font-body text-sm tracking-widest uppercase font-semibold hover:bg-gold-bright transition-colors duration-300 flex items-center justify-center gap-3 overflow-hidden">
+                <motion.span className="absolute inset-0 bg-gold-bright" initial={{ x: '-100%' }} whileHover={{ x: 0 }} transition={{ duration: 0.3 }} />
                 <span className="relative z-10 flex items-center gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
                   Reservar por WhatsApp
                 </span>
               </a>
-
-              {/* Secondary CTA — Email */}
-              <a
-                href="mailto:naturalveneers.lab@gmail.com?subject=Reserva%20Entrenamiento%20Natural%20Veneers"
-                className="px-10 py-5 border border-gold/40 text-gold font-body text-sm tracking-widest uppercase hover:border-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center"
-              >
-                Enviar Email
-              </a>
+              <a href="mailto:naturalveneers.lab@gmail.com?subject=Reserva%20Entrenamiento%20Natural%20Veneers" className="px-10 py-5 border border-gold/40 text-gold font-body text-sm tracking-widest uppercase hover:border-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center">Enviar Email</a>
             </div>
           </Reveal>
-
           <Reveal delay={0.4}>
             <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto">
-              {[
-                { v: '8 px', l: 'Máx. participantes' },
-                { v: 'BCQ', l: 'Barranquilla' },
-                { v: '✓', l: 'Certificación incluida' },
-              ].map((item) => (
+              {[{ v: '8 px', l: 'Máx. participantes' }, { v: 'BCQ', l: 'Barranquilla' }, { v: '✓', l: 'Certificación incluida' }].map((item) => (
                 <div key={item.l} className="text-center">
                   <div className="font-display text-xl text-gold mb-0.5">{item.v}</div>
-                  <div className="font-body text-[9px] text-mist/35 uppercase tracking-widest leading-tight">
-                    {item.l}
-                  </div>
+                  <div className="font-body text-[9px] text-mist/35 uppercase tracking-widest leading-tight">{item.l}</div>
                 </div>
               ))}
             </div>
