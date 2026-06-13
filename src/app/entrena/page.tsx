@@ -427,20 +427,40 @@ export default function EntrenaPage() {
             </h2>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Video testimonio */}
+          <div className="grid md:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-center">
+            {/* Video testimonio — formato historia vertical */}
             <Reveal delay={0.15}>
-              <div className="relative overflow-hidden border border-gold/20 group">
-                <video
-                  className="w-full aspect-[9/16] md:aspect-video object-cover"
-                  src="/img/training/testimonio.mp4"
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster="/img/training/photo-04.jpg"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="font-body text-[10px] tracking-widest text-gold uppercase bg-void/70 backdrop-blur-sm px-3 py-1.5 border border-gold/20">Testimonio Real</span>
+              <div className="mx-auto md:mx-0" style={{ width: 'min(280px, 100%)' }}>
+                {/* Marco estilo teléfono / Story */}
+                <div className="relative rounded-2xl overflow-hidden border border-gold/25 shadow-[0_0_40px_rgba(201,162,39,0.08)]" style={{ aspectRatio: '9/16' }}>
+                  {/* Gradiente superior tipo Instagram Story */}
+                  <div className="absolute top-0 left-0 right-0 z-10 h-16 bg-gradient-to-b from-void/70 to-transparent pointer-events-none" />
+                  {/* Badge tipo historia */}
+                  <div className="absolute top-4 left-0 right-0 z-20 flex items-center justify-between px-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gold flex items-center justify-center flex-shrink-0">
+                        <span className="text-void text-[8px] font-bold">NV</span>
+                      </div>
+                      <span className="font-body text-[10px] tracking-widest text-cream/90 uppercase">naturalveneers.sas</span>
+                    </div>
+                    <span className="font-body text-[9px] text-gold/80 uppercase tracking-wider border border-gold/30 px-2 py-0.5 bg-void/50 backdrop-blur-sm">Historia</span>
+                  </div>
+                  {/* Barra de progreso tipo Story */}
+                  <div className="absolute top-2 left-3 right-3 z-20">
+                    <div className="w-full h-0.5 bg-white/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gold/80 rounded-full" style={{ width: '60%' }} />
+                    </div>
+                  </div>
+                  <video
+                    className="w-full h-full object-cover"
+                    src="/img/training/testimonio.mp4"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    poster="/img/training/photo-04.jpg"
+                  />
+                  {/* Gradiente inferior */}
+                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-void/60 to-transparent pointer-events-none" />
                 </div>
               </div>
             </Reveal>
