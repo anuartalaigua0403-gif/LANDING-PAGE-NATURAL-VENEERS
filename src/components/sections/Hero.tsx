@@ -104,7 +104,7 @@ export default function Hero() {
           </a>
           <a
             ref={btnRef}
-            href={formatWhatsAppUrl(process.env.NEXT_PUBLIC_WHATSAPP || '573043838031')}
+            href={formatWhatsAppUrl(process.env.NEXT_PUBLIC_WHATSAPP || '573024240780')}
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 border border-gold/40 text-gold font-body text-xs tracking-widest uppercase hover:border-gold hover:bg-gold/5 transition-all duration-300"
