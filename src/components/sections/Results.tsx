@@ -7,7 +7,7 @@ import { useT } from '@/hooks/useLanguage'
 import { ui } from '@/lib/translations'
 
 const RESULT_IMAGES = [
-  { src: '/img/resultado-1.jpg', alt: 'Result 1' },
+  { src: '/img/456242074_18453437722048130_4031970853624360159_n.jpg', alt: 'Result 1' },
   { src: '/img/r4.jpg', alt: 'Result 2' },
   { src: '/img/r6.jpg', alt: 'Result 3' },
 ]

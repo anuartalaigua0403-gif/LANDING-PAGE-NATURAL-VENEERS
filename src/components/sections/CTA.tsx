@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { useT } from '@/hooks/useLanguage'
 import { ui } from '@/lib/translations'
 import { formatWhatsAppUrl } from '@/lib/utils'
-import type { ContactFormData, ContactApiResponse } from '@/types'
+import type { ContactFormData } from '@/types'
 
 export default function CTA() {
   const T = useT()
@@ -33,17 +33,17 @@ export default function CTA() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus('sending')
+    window.open(formatWhatsAppUrl(process.env.NEXT_PUBLIC_WHATSAPP || '573043838031', 'Nombre: ' + form.name + ' | Email: ' + form.email + ' | Tel: ' + (form.phone || '') + ' | Mensaje: ' + form.message), '_blank'); setStatus('success')
     try {
-      const res = await fetch('/api/contact', {
+      /* disabled
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, lang: 'es' }),
       })
       const data: ContactApiResponse = await res.json()
-      setStatus(data.success ? 'success' : 'error')
+      */
     } catch {
-      setStatus('error')
+      // silent
     }
   }
 
