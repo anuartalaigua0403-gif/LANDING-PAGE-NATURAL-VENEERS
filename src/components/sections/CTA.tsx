@@ -9,7 +9,7 @@ import type { ContactFormData } from '@/types'
 
 export default function CTA() {
   const T = useT()
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null)h
   const inView = useInView(ref, { once: true, margin: '-10%' })
 
   const formT = {
@@ -33,7 +33,7 @@ export default function CTA() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    window.open(formatWhatsAppUrl(process.env.NEXT_PUBLIC_WHATSAPP || '573043838031', 'Nombre: ' + form.name + ' | Email: ' + form.email + ' | Tel: ' + (form.phone || '') + ' | Mensaje: ' + form.message), '_blank'); setStatus('success')
+    window.open(formatWhatsAppUrl(process.env.NEXT_PUBLIC_WHATSAPP || '573024240780', 'Nombre: ' + form.name + ' | Email: ' + form.email + ' | Tel: ' + (form.phone || '') + ' | Mensaje: ' + form.message), '_blank'); setStatus('success')
     try {
       /* disabled
         method: 'POST',
@@ -91,7 +91,7 @@ export default function CTA() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
               href={formatWhatsAppUrl(
-                process.env.NEXT_PUBLIC_WHATSAPP || '573043838031',
+                process.env.NEXT_PUBLIC_WHATSAPP || '573024240780',
                 'Hola, me interesa conocer mas sobre sus carillas dentales.'
               )}
               target="_blank"
