@@ -71,13 +71,13 @@ export const ui = {
       es: [
         { value: '6+', label: 'Años de Experiencia' },
         { value: '4.500+', label: 'Carillas Fabricadas' },
-        { value: '96%', label: 'Satisfacción Clínica' },
+        { value: '95%', label: 'Satisfacción Clínica' },
         { value: '5+', label: 'Países Exportados' },
       ],
       en: [
         { value: '6+', label: 'Years of Experience' },
         { value: '4,500+', label: 'Veneers Crafted' },
-        { value: '96%', label: 'Clinical Satisfaction' },
+        { value: '95%', label: 'Clinical Satisfaction' },
         { value: '5+', label: 'Export Countries' },
       ],
     },
