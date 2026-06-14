@@ -22,7 +22,7 @@ export default function Footer() {
               </Link>))}
           </div>
           <div className="flex flex-col gap-3">
-            <a href="https://wa.me/573043838031" target="_blank" rel="noopener noreferrer" className="font-body text-sm text-mist/70 hover:text-gold transition-colors duration-300">+57 304 383 8031</a>
+            <a href="https://wa.me/573024240780" target="_blank" rel="noopener noreferrer" className="font-body text-sm text-mist/70 hover:text-gold transition-colors duration-300">+57 304 383 8031</a>
             <span className="font-body text-sm text-mist/40">{T(ui.footer.location)}</span>
           </div>
         </div>
