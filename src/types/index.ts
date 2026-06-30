@@ -26,6 +26,16 @@ export interface FAQItem {
   answerEn: string
 }
 
+export interface Testimonial {
+  name: string
+  roleEs: string
+  roleEn: string
+  city: string
+  quoteEs: string
+  quoteEn: string
+  rating: number
+}
+
 export interface ContactFormData {
   name: string
   email: string
