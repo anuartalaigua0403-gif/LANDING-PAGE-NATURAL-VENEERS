@@ -4,11 +4,12 @@ import Products from '@/components/sections/Products'
 import Process from '@/components/sections/Process'
 import Results from '@/components/sections/Results'
 import Stats from '@/components/sections/Stats'
+import Testimonials from '@/components/sections/Testimonials'
 import About from '@/components/sections/About'
 import FAQ from '@/components/sections/FAQ'
 import CTA from '@/components/sections/CTA'
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
       <Hero />
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Process />
       <Results />
       <Stats />
+      <Testimonials />
       <About />
       <FAQ />
       <CTA />
