@@ -1,4 +1,4 @@
-import type { Lang, Product, ProcessStep, FAQItem } from '@/types'
+import type { Lang, Product, ProcessStep, FAQItem, Testimonial } from '@/types'
 
 export const ui = {
   nav: {
@@ -22,26 +22,8 @@ export const ui = {
   },
   marquee: {
     items: {
-      es: [
-        'Carillas Estratificadas',
-        'Carillas Monolíticas',
-        'Feldespato Puro',
-        'Carillas Híbridas',
-        'Precisión Microscópica',
-        'Estética Máxima',
-        'Laboratorio Premium',
-        'Colombia',
-      ],
-      en: [
-        'Layered Veneers',
-        'Monolithic Veneers',
-        'Pure Feldspar',
-        'Hybrid Veneers',
-        'Microscopic Precision',
-        'Maximum Aesthetics',
-        'Premium Laboratory',
-        'Colombia',
-      ],
+      es: ['Carillas Estratificadas','Carillas Monolíticas','Feldespato Puro','Carillas Híbridas','Precisión Microscópica','Estética Máxima','Laboratorio Premium','Colombia'],
+      en: ['Layered Veneers','Monolithic Veneers','Pure Feldspar','Hybrid Veneers','Microscopic Precision','Maximum Aesthetics','Premium Laboratory','Colombia'],
     },
   },
   products: {
@@ -65,21 +47,31 @@ export const ui = {
     sectionLabel: { es: 'Resultados Reales', en: 'Real Results' },
     title: { es: 'Sonrisas que', en: 'Smiles That' },
     title2: { es: 'Hablan por Sí Solas', en: 'Speak for Themselves' },
+    dragHint: { es: 'Arrastra para comparar', en: 'Drag to compare' },
   },
   stats: {
     items: {
       es: [
-        { value: '6+', label: 'Años de Experiencia' },
-        { value: '4.500+', label: 'Carillas Fabricadas' },
-        { value: '95%', label: 'Satisfacción Clínica' },
-        { value: '5+', label: 'Países Exportados' },
+        { value: '8+', label: 'Años de Experiencia' },
+        { value: '2.400+', label: 'Carillas Fabricadas' },
+        { value: '98%', label: 'Satisfacción Clínica' },
+        { value: '12+', label: 'Países Exportados' },
       ],
       en: [
-        { value: '6+', label: 'Years of Experience' },
-        { value: '4,500+', label: 'Veneers Crafted' },
-        { value: '95%', label: 'Clinical Satisfaction' },
-        { value: '5+', label: 'Export Countries' },
+        { value: '8+', label: 'Years of Experience' },
+        { value: '2,400+', label: 'Veneers Crafted' },
+        { value: '98%', label: 'Clinical Satisfaction' },
+        { value: '12+', label: 'Export Countries' },
       ],
+    },
+  },
+  testimonials: {
+    sectionLabel: { es: 'Testimonios', en: 'Testimonials' },
+    title: { es: 'Lo que Dicen', en: 'What They Say' },
+    title2: { es: 'Nuestros Clínicos', en: 'Our Clinicians' },
+    subtitle: {
+      es: 'La confianza de los mejores especialistas respalda cada carilla que fabricamos.',
+      en: 'The trust of the finest specialists backs every veneer we craft.',
     },
   },
   about: {
@@ -107,7 +99,7 @@ export const ui = {
     title2: { es: 'Siguiente Nivel', en: 'Next Level' },
     subtitle: {
       es: 'Contacta a nuestro equipo y descubre cómo podemos transformar los casos de tus pacientes con carillas de clase mundial.',
-      en: 'Contact our team and discover how we can transform your patients\' cases with world-class veneers.',
+      en: "Contact our team and discover how we can transform your patients' cases with world-class veneers.",
     },
     whatsapp: { es: 'Escribir por WhatsApp', en: 'Message on WhatsApp' },
     form: {
@@ -117,21 +109,12 @@ export const ui = {
       message: { es: 'Cuéntanos sobre tu caso', en: 'Tell us about your case' },
       submit: { es: 'Enviar Mensaje', en: 'Send Message' },
       sending: { es: 'Enviando...', en: 'Sending...' },
-      success: {
-        es: 'Mensaje enviado. Te contactamos pronto.',
-        en: 'Message sent. We\'ll contact you soon.',
-      },
-      error: {
-        es: 'Error al enviar. Intenta de nuevo.',
-        en: 'Failed to send. Please try again.',
-      },
+      success: { es: 'Mensaje enviado. Te contactamos pronto.', en: "Message sent. We'll contact you soon." },
+      error: { es: 'Error al enviar. Intenta de nuevo.', en: 'Failed to send. Please try again.' },
     },
   },
   footer: {
-    tagline: {
-      es: 'Arte en porcelana. Excelencia en cada detalle.',
-      en: 'Art in porcelain. Excellence in every detail.',
-    },
+    tagline: { es: 'Arte en porcelana. Excelencia en cada detalle.', en: 'Art in porcelain. Excellence in every detail.' },
     rights: { es: 'Todos los derechos reservados.', en: 'All rights reserved.' },
     location: { es: 'Colombia', en: 'Colombia' },
   },
@@ -211,31 +194,61 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     questionEs: '¿Cuál es el tiempo de entrega?',
     questionEn: 'What is the turnaround time?',
-    answerEs: 'El tiempo estándar es de 2 a 4 días hábiles desde la recepción del modelo.',
-    answerEn: 'Standard turnaround is 2 to 4 business days from model receipt.',
+    answerEs: 'El tiempo estándar es 10-15 días hábiles desde la recepción del modelo. Para casos urgentes ofrecemos servicio express de 7 días hábiles con coordinación previa.',
+    answerEn: 'Standard turnaround is 10-15 business days from model receipt. For urgent cases we offer an express 7-business-day service with prior coordination.',
   },
   {
     questionEs: '¿Trabajan con clínicos fuera de Colombia?',
     questionEn: 'Do you work with clinicians outside Colombia?',
-    answerEs: 'Sí, trabajamos con clínicos en más de 5 países. Tenemos experiencia en envíos internacionales con embalaje especializado y seguro para trabajo dental.',
-    answerEn: 'Yes, we work with clinicians in more than 5 countries. We have experience in international shipping with specialized packaging and dental work insurance.',
+    answerEs: 'Sí, exportamos a más de 12 países. Tenemos experiencia en envíos internacionales con embalaje especializado y seguro para trabajo dental.',
+    answerEn: 'Yes, we export to over 12 countries. We have experience in international shipping with specialized packaging and dental work insurance.',
   },
   {
     questionEs: '¿Qué información necesitan para iniciar un caso?',
     questionEn: 'What information do you need to start a case?',
     answerEs: 'Necesitamos: fotos clínicas (frontal, lateral, oclusal), guía de color, modelo de estudio o STL digital, y el diseño de sonrisa si ya lo tienen. Les enviamos nuestro formulario de solicitud por WhatsApp.',
-    answerEn: 'We need: clinical photos (frontal, lateral, occlusal), shade guide, study model or digital STL, and smile design if already done. We\'ll send our order form via WhatsApp.',
+    answerEn: "We need: clinical photos (frontal, lateral, occlusal), shade guide, study model or digital STL, and smile design if already done. We'll send our order form via WhatsApp.",
   },
   {
     questionEs: '¿Qué garantía ofrecen?',
     questionEn: 'What warranty do you offer?',
     answerEs: 'Garantizamos el ajuste y la estética de cada carilla. Si hay algún problema de adaptación en el Try-In, hacemos los ajustes necesarios sin costo adicional.',
-    answerEn: 'We guarantee the fit and aesthetics of every veneer. If there\'s any adaptation issue at Try-In, we make the necessary adjustments at no extra cost.',
+    answerEn: "We guarantee the fit and aesthetics of every veneer. If there's any adaptation issue at Try-In, we make the necessary adjustments at no extra cost.",
   },
   {
     questionEs: '¿Utilizan materiales certificados?',
     questionEn: 'Do you use certified materials?',
     answerEs: 'Trabajamos exclusivamente con porcelanas de casas internacionales certificadas (VITA, Ivoclar, GC) con trazabilidad completa por lote.',
     answerEn: 'We work exclusively with porcelains from certified international brands (VITA, Ivoclar, GC) with complete batch traceability.',
+  },
+]
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    name: 'Dr. Carolina Méndez',
+    roleEs: 'Especialista en Estética Dental',
+    roleEn: 'Dental Aesthetics Specialist',
+    city: 'Bogotá, Colombia',
+    quoteEs: 'Trabajar con Natural Veneers cambió completamente la calidad de mis casos. La translucidez de las carillas estratificadas es simplemente insuperable.',
+    quoteEn: 'Working with Natural Veneers completely changed the quality of my cases. The translucency of the layered veneers is simply unmatched.',
+    rating: 5,
+  },
+  {
+    name: 'Dr. Andrés Villareal',
+    roleEs: 'Prostodoncista Certificado',
+    roleEn: 'Certified Prosthodontist',
+    city: 'Medellín, Colombia',
+    quoteEs: 'El servicio express de 7 días me ha salvado en casos urgentes. Calidad constante, comunicación perfecta y resultados que mis pacientes aman.',
+    quoteEn: 'The 7-day express service has saved me on urgent cases. Consistent quality, perfect communication, and results my patients love.',
+    rating: 5,
+  },
+  {
+    name: 'Dra. María Fernanda Cruz',
+    roleEs: 'Odontóloga Rehabilitadora',
+    roleEn: 'Restorative Dentist',
+    city: 'Ciudad de México, México',
+    quoteEs: 'Recibo mis pedidos desde Colombia sin ningún problema. El embalaje protege perfectamente y cada carilla llega lista para cementar.',
+    quoteEn: 'I receive my orders from Colombia without any issue. The packaging protects perfectly and every veneer arrives ready to cement.',
+    rating: 5,
   },
 ]
