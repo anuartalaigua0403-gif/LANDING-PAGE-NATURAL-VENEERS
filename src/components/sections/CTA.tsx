@@ -12,7 +12,16 @@ export default function CTA() {
   const { lang } = useLanguage()
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-10%' })
-  const formT = T(ui.cta.form)
+  const formT = {
+    name: T(ui.cta.form.name),
+    email: T(ui.cta.form.email),
+    phone: T(ui.cta.form.phone),
+    message: T(ui.cta.form.message),
+    submit: T(ui.cta.form.submit),
+    sending: T(ui.cta.form.sending),
+    success: T(ui.cta.form.success),
+    error: T(ui.cta.form.error),
+  }
 
   const [form, setForm] = useState<Omit<ContactFormData, 'lang'>>({
     name: '', email: '', phone: '', message: '',
