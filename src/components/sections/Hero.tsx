@@ -1,16 +1,25 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useT } from '@/hooks/useLanguage'
 import { ui } from '@/lib/translations'
 import { formatWhatsAppUrl } from '@/lib/utils'
+import { usePreloader } from '@/context/PreloaderContext'
 
 export default function Hero() {
   const T = useT()
+  const { ready } = usePreloader()
   const btnRef = useRef<HTMLAnchorElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
-  // Magnetic button effect
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '22%'])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.08])
+
   useEffect(() => {
     const btn = btnRef.current
     if (!btn) return
@@ -29,31 +38,31 @@ export default function Hero() {
     }
   }, [])
 
-  const easeExpo = [0.16, 1, 0.3, 1] as const
+  const ease = [0.16, 1, 0.3, 1] as const
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
+      <motion.div
+        className="absolute inset-[-12%] bg-cover bg-no-repeat"
         style={{
           backgroundImage: "url('/img/hero.jpg')",
           backgroundPosition: 'center 52%',
+          y: bgY,
+          scale: bgScale,
         }}
       />
-      {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-void/90 via-void/60 to-void/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-void/40" />
 
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.0, duration: 0.6, ease: easeExpo }}
+          animate={ready ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1, duration: 0.6, ease }}
           className="inline-flex items-center gap-3 mb-8"
         >
           <div className="w-8 h-px bg-gold" />
@@ -66,16 +75,16 @@ export default function Hero() {
           <motion.span
             className="block text-cream"
             initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.1, duration: 0.8, ease: easeExpo }}
+            animate={ready ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.8, ease }}
           >
             {T(ui.hero.title1)}
           </motion.span>
           <motion.span
             className="block text-gold"
             initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.25, duration: 0.8, ease: easeExpo }}
+            animate={ready ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.35, duration: 0.8, ease }}
           >
             {T(ui.hero.title2)}
           </motion.span>
@@ -84,8 +93,8 @@ export default function Hero() {
         <motion.p
           className="font-body text-base md:text-lg text-mist/80 max-w-lg leading-relaxed mb-12"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.4, duration: 0.8, ease: easeExpo }}
+          animate={ready ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.8, ease }}
         >
           {T(ui.hero.subtitle)}
         </motion.p>
@@ -93,8 +102,8 @@ export default function Hero() {
         <motion.div
           className="flex flex-wrap gap-4 items-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.55, duration: 0.8, ease: easeExpo }}
+          animate={ready ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.65, duration: 0.8, ease }}
         >
           <a
             href="#products"
@@ -113,12 +122,11 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 4.0, duration: 1 }}
+          animate={ready ? { opacity: 1 } : {}}
+          transition={{ delay: 1.0, duration: 1 }}
         >
           <span className="font-body text-[10px] tracking-widest text-mist/40 uppercase">
             {T(ui.hero.scroll)}
@@ -128,4 +136,4 @@ export default function Hero() {
       </div>
     </section>
   )
-}
+            }
