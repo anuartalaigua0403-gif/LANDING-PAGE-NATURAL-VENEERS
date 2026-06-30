@@ -6,7 +6,7 @@ import { ui } from '@/lib/translations'
 
 export default function Marquee() {
   const T = useT()
-  const items = T(ui.marquee.items)
+  const items = T(ui.marquee.items as { es: string[]; en: string[] })
   const trackRef = useRef<HTMLDivElement>(null)
   const all = [...items, ...items]
 
