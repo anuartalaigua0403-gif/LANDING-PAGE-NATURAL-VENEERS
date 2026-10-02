@@ -53,8 +53,8 @@ export default function Navbar() {
           <Link
             href="/entrena"
             aria-current={onTraining ? 'page' : undefined}
-            className={`font-body text-xs tracking-widest uppercase px-4 py-2 border transition-colors duration-300 ${
-              onTraining ? 'bg-gold text-void border-gold' : 'border-gold/50 text-gold hover:bg-gold hover:text-void'
+            className={`font-body text-xs font-semibold tracking-widest uppercase px-5 py-2.5 border transition-colors duration-300 ${
+              onTraining ? 'bg-gold-bright text-void border-gold-bright ring-2 ring-gold/40 ring-offset-2 ring-offset-void' : 'bg-gold text-void border-gold shadow-[0_0_18px_rgba(201,162,39,0.45)] hover:bg-gold-bright hover:border-gold-bright'
             }`}
           >
             {T(ui.nav.training)}
@@ -86,8 +86,8 @@ export default function Navbar() {
             href="/entrena"
             onClick={() => setMenuOpen(false)}
             aria-current={onTraining ? 'page' : undefined}
-            className={`self-start font-body text-sm tracking-widest uppercase px-4 py-2 border transition-colors duration-300 ${
-              onTraining ? 'bg-gold text-void border-gold' : 'border-gold/50 text-gold hover:bg-gold hover:text-void'
+            className={`self-start font-body text-sm font-semibold tracking-widest uppercase px-5 py-2.5 border transition-colors duration-300 ${
+              onTraining ? 'bg-gold-bright text-void border-gold-bright ring-2 ring-gold/40 ring-offset-2 ring-offset-void' : 'bg-gold text-void border-gold shadow-[0_0_18px_rgba(201,162,39,0.45)] hover:bg-gold-bright hover:border-gold-bright'
             }`}
           >
             {T(ui.nav.training)}
