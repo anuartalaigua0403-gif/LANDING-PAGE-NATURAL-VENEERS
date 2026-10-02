@@ -7,6 +7,7 @@ export const ui = {
     results: { es: 'Resultados', en: 'Results' },
     about: { es: 'Nosotros', en: 'About' },
     contact: { es: 'Contacto', en: 'Contact' },
+    training: { es: 'Formación', en: 'Training' },
   },
   hero: {
     badge: { es: 'Laboratorio Dental Premium', en: 'Premium Dental Laboratory' },

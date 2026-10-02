@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import LanguageToggle from '@/components/ui/LanguageToggle'
 import { useT } from '@/hooks/useLanguage'
@@ -11,6 +12,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const T = useT()
+  const pathname = usePathname()
+  const onTraining = pathname?.startsWith('/entrena') ?? false
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
@@ -19,11 +22,11 @@ export default function Navbar() {
   }, [])
 
   const navLinks = [
-    { href: '#products', label: T(ui.nav.products) },
-    { href: '#process', label: T(ui.nav.process) },
-    { href: '#results', label: T(ui.nav.results) },
-    { href: '#about', label: T(ui.nav.about) },
-    { href: '#contact', label: T(ui.nav.contact) },
+    { href: '/#products', label: T(ui.nav.products) },
+    { href: '/#process', label: T(ui.nav.process) },
+    { href: '/#results', label: T(ui.nav.results) },
+    { href: '/#about', label: T(ui.nav.about) },
+    { href: '/#contact', label: T(ui.nav.contact) },
   ]
 
   return (
@@ -47,6 +50,15 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/entrena"
+            aria-current={onTraining ? 'page' : undefined}
+            className={`font-body text-xs font-semibold tracking-widest uppercase px-5 py-2.5 border transition-colors duration-300 ${
+              onTraining ? 'bg-gold-bright text-void border-gold-bright ring-2 ring-gold/40 ring-offset-2 ring-offset-void' : 'bg-gold text-void border-gold shadow-[0_0_18px_rgba(201,162,39,0.45)] hover:bg-gold-bright hover:border-gold-bright'
+            }`}
+          >
+            {T(ui.nav.training)}
+          </Link>
         </div>
 
         <div className="flex items-center gap-6">
@@ -70,6 +82,16 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/entrena"
+            onClick={() => setMenuOpen(false)}
+            aria-current={onTraining ? 'page' : undefined}
+            className={`self-start font-body text-sm font-semibold tracking-widest uppercase px-5 py-2.5 border transition-colors duration-300 ${
+              onTraining ? 'bg-gold-bright text-void border-gold-bright ring-2 ring-gold/40 ring-offset-2 ring-offset-void' : 'bg-gold text-void border-gold shadow-[0_0_18px_rgba(201,162,39,0.45)] hover:bg-gold-bright hover:border-gold-bright'
+            }`}
+          >
+            {T(ui.nav.training)}
+          </Link>
         </motion.div>
       )}
     </motion.nav>
