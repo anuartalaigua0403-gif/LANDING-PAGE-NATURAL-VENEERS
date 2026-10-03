@@ -151,8 +151,8 @@ const EVENT_VIDEOS: MediaItem[] = [
 ]
 
 const RESULT_VIDEOS: MediaItem[] = [
-  { src: '/img/training/resultado-frontal.mp4', poster: '/img/training/resultado-frontal.jpg', label: 'Resultado · Vista frontal', ratio: 16 / 9 },
-  { src: '/img/training/resultado-perfil.mp4', poster: '/img/training/resultado-perfil.jpg', label: 'Resultado · Vista de perfil', ratio: 9 / 16 },
+  { src: '/img/training/resultado-frontal.mp4', poster: '/img/training/resultado-frontal.jpg', label: 'Resultado · Frontal', ratio: 16 / 9 },
+  { src: '/img/training/resultado-perfil.mp4', poster: '/img/training/resultado-perfil.jpg', label: 'Resultado · Perfil', ratio: 9 / 16 },
 ]
 
 /** Video corto en loop: solo se reproduce cuando está visible (ahorra datos y batería). */
@@ -197,9 +197,9 @@ function LoopVideo({ item }: { item: MediaItem }) {
  * En móvil se apilan; desde tablet cada video ocupa un ancho proporcional a su formato,
  * así todos quedan a la misma altura sin recortar.
  */
-function MediaRow({ items }: { items: MediaItem[] }) {
+function MediaRow({ items, className = '' }: { items: MediaItem[]; className?: string }) {
   return (
-    <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+    <div className={`flex flex-col md:flex-row gap-3 md:gap-4 ${className}`}>
       {items.map((item, i) => (
         <Reveal
           key={item.src}
@@ -618,7 +618,7 @@ export default function EntrenaPage() {
                 <p className="font-body text-sm text-mist/60 max-w-md">La naturalidad de la cerámica se aprecia mejor en video: luz, textura y forma.</p>
               </div>
             </Reveal>
-            <MediaRow items={RESULT_VIDEOS} />
+            <MediaRow items={RESULT_VIDEOS} className="md:max-w-4xl md:mx-auto" />
           </div>
         </div>
       </section>
