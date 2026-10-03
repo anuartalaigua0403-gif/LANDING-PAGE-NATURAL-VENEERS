@@ -23,8 +23,8 @@ export const ui = {
   },
   marquee: {
     items: {
-      es: ['Carillas Estratificadas','Carillas Monolíticas','Feldespato Puro','Carillas Híbridas','Precisión Microscópica','Estética Máxima','Laboratorio Premium','Colombia'],
-      en: ['Layered Veneers','Monolithic Veneers','Pure Feldspar','Hybrid Veneers','Microscopic Precision','Maximum Aesthetics','Premium Laboratory','Colombia'],
+      es: ['Carillas Estratificadas','Carillas Maquilladas','Feldespato Puro','Carillas Híbridas','Precisión Microscópica','Estética Máxima','Laboratorio Premium','Colombia'],
+      en: ['Layered Veneers','Stained Veneers','Pure Feldspar','Hybrid Veneers','Microscopic Precision','Maximum Aesthetics','Premium Laboratory','Colombia'],
     },
   },
   products: {
@@ -128,7 +128,7 @@ export function t<T>(obj: { es: T; en: T }, lang: Lang): T {
 export const PRODUCTS: Product[] = [
   {
     id: 'estratificadas',
-    image: '/img/estratificadas.jpg',
+    image: '/img/estratificadas-portada.jpg',
     titleEs: 'Carillas Estratificadas',
     titleEn: 'Layered Veneers',
     descEs: 'Máxima translucidez y naturalidad. Capas de porcelana aplicadas manualmente para mimetizar el esmalte dental.',
@@ -136,17 +136,17 @@ export const PRODUCTS: Product[] = [
     tag: 'Premium',
   },
   {
-    id: 'monoliticas',
-    image: '/img/monoliticas-new.jpg',
-    titleEs: 'Carillas Monolíticas',
-    titleEn: 'Monolithic Veneers',
-    descEs: 'Alta resistencia en una sola estructura. Ideal para casos funcionales sin sacrificar estética.',
-    descEn: 'High strength in a single structure. Ideal for functional cases without sacrificing aesthetics.',
-    tag: 'Resistentes',
+    id: 'maquilladas',
+    image: '/img/maquilladas.jpg',
+    titleEs: 'Carillas Maquilladas',
+    titleEn: 'Stained Veneers',
+    descEs: 'Caracterizadas con maquillaje cerámico en superficie para lograr color, profundidad y naturalidad.',
+    descEn: 'Characterized with surface ceramic stains to achieve color, depth and a natural look.',
+    tag: 'Caracterizadas',
   },
   {
     id: 'feldespato',
-    image: '/img/feldespato.jpg',
+    image: '/img/feldespato-portada.jpg',
     titleEs: 'Feldespato Puro',
     titleEn: 'Pure Feldspar',
     descEs: 'La porcelana más cercana al diente natural. Ultra-finas, hasta 0.3mm de grosor.',
@@ -171,7 +171,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     titleEn: 'Digital Design',
     descEs: 'Analizamos el caso clínico con software de diseño de sonrisa. Cada caso es único.',
     descEn: 'We analyze the clinical case with smile design software. Every case is unique.',
-    image: '/img/proceso-1.jpg',
+    image: '/img/diseno-digital.jpg',
   },
   {
     number: '02',
