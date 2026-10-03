@@ -356,18 +356,21 @@ export default function EntrenaPage() {
       <section className="py-32 px-6 bg-jet/20 border-y border-gold/10">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <Reveal className="relative">
-              <div className="relative aspect-[4/5] bg-void border border-gold/20 overflow-hidden">
+            <Reveal className="relative w-full max-w-md mx-auto md:max-w-none">
+              <div className="relative aspect-[2/3] w-full bg-void border border-gold/20 overflow-hidden">
                 <img
-                  src="/img/training/yesid-guerrero.jpg"
+                  src="/img/training/yesid-guerrero-retrato.jpg"
                   alt="Yesid Guerrero — Director Técnico Natural Veneers"
-                  className="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-all duration-700"
+                  width={1024}
+                  height={1536}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-center"
                 />
                 <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-gold" />
                 <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-gold" />
               </div>
               <motion.div
-                className="absolute -bottom-6 -right-6 md:-right-8 bg-void border border-gold/30 p-5 backdrop-blur-sm"
+                className="absolute -bottom-6 -right-2 sm:-right-6 md:-right-8 bg-void border border-gold/30 p-5 backdrop-blur-sm"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
