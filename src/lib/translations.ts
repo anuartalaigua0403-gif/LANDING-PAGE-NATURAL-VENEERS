@@ -128,7 +128,7 @@ export function t<T>(obj: { es: T; en: T }, lang: Lang): T {
 export const PRODUCTS: Product[] = [
   {
     id: 'estratificadas',
-    image: '/img/estratificadas.jpg',
+    image: '/img/estratificadas-portada.jpg',
     titleEs: 'Carillas Estratificadas',
     titleEn: 'Layered Veneers',
     descEs: 'Máxima translucidez y naturalidad. Capas de porcelana aplicadas manualmente para mimetizar el esmalte dental.',
@@ -171,7 +171,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     titleEn: 'Digital Design',
     descEs: 'Analizamos el caso clínico con software de diseño de sonrisa. Cada caso es único.',
     descEn: 'We analyze the clinical case with smile design software. Every case is unique.',
-    image: '/img/proceso-1.jpg',
+    image: '/img/diseno-digital.jpg',
   },
   {
     number: '02',
