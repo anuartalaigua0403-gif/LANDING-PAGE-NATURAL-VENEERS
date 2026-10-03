@@ -120,10 +120,12 @@ function Reveal({
   children,
   delay = 0,
   className = '',
+  style,
 }: {
   children: React.ReactNode
   delay?: number
   className?: string
+  style?: React.CSSProperties
 }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -131,12 +133,86 @@ function Reveal({
     <motion.div
       ref={ref}
       className={className}
+      style={style}
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease, delay }}
     >
       {children}
     </motion.div>
+  )
+}
+
+type MediaItem = { src: string; poster: string; label: string; ratio: number }
+
+const EVENT_VIDEOS: MediaItem[] = [
+  { src: '/img/training/practica-modelo.mp4', poster: '/img/training/practica-modelo.jpg', label: 'Práctica sobre modelo', ratio: 2.35 },
+  { src: '/img/training/evento-formacion.mp4', poster: '/img/training/evento-formacion.jpg', label: 'Evento · Formación presencial', ratio: 4 / 3 },
+]
+
+const RESULT_VIDEOS: MediaItem[] = [
+  { src: '/img/training/resultado-frontal.mp4', poster: '/img/training/resultado-frontal.jpg', label: 'Resultado · Vista frontal', ratio: 16 / 9 },
+  { src: '/img/training/resultado-perfil.mp4', poster: '/img/training/resultado-perfil.jpg', label: 'Resultado · Vista de perfil', ratio: 9 / 16 },
+]
+
+/** Video corto en loop: solo se reproduce cuando está visible (ahorra datos y batería). */
+function LoopVideo({ item }: { item: MediaItem }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) v.play().catch(() => {})
+        else v.pause()
+      },
+      { threshold: 0.25 },
+    )
+    io.observe(v)
+    return () => io.disconnect()
+  }, [])
+  return (
+    <div className="relative overflow-hidden bg-jet border border-gold/10 group" style={{ aspectRatio: String(item.ratio) }}>
+      <video
+        ref={ref}
+        className="absolute inset-0 w-full h-full object-cover"
+        src={item.src}
+        poster={item.poster}
+        muted
+        loop
+        playsInline
+        preload="none"
+        aria-label={item.label}
+      />
+      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-void/80 to-transparent pointer-events-none" />
+      <span className="absolute bottom-3 left-3 font-body text-[10px] sm:text-xs text-gold/90 tracking-widest uppercase bg-void/60 backdrop-blur-sm px-3 py-1.5">
+        {item.label}
+      </span>
+    </div>
+  )
+}
+
+/**
+ * Fila de videos con formatos distintos (vertical, 4:3, 16:9, panorámico).
+ * En móvil se apilan; desde tablet cada video ocupa un ancho proporcional a su formato,
+ * así todos quedan a la misma altura sin recortar.
+ */
+function MediaRow({ items }: { items: MediaItem[] }) {
+  return (
+    <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+      {items.map((item, i) => (
+        <Reveal
+          key={item.src}
+          delay={i * 0.1}
+          className="w-full md:w-auto md:min-w-0 md:[flex:var(--r)_1_0%]"
+          style={{ '--r': item.ratio } as React.CSSProperties}
+        >
+          <div className={item.ratio < 1 ? 'mx-auto w-full max-w-[340px] md:max-w-none' : ''}>
+            <LoopVideo item={item} />
+          </div>
+        </Reveal>
+      ))}
+    </div>
   )
 }
 
@@ -408,8 +484,8 @@ export default function EntrenaPage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIOS ── */}
-      <section className="py-32 px-6 relative overflow-hidden">
+      {/* ── TESTIMONIOS · EVENTOS · RESULTADOS ── */}
+      <section className="py-24 md:py-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
@@ -418,19 +494,21 @@ export default function EntrenaPage() {
           <Reveal>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-px bg-gold" />
-              <span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Lo Que Dicen Quienes Ya Vivieron la Experiencia</span>
+              <span className="font-body text-[10px] sm:text-xs tracking-[0.25em] text-gold uppercase">Lo Que Dicen Quienes Ya Vivieron la Experiencia</span>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-display text-4xl md:text-5xl text-cream mb-16 leading-tight">
+            <h2 className="font-display text-4xl md:text-5xl text-cream mb-12 md:mb-16 leading-tight">
               Resultados que <span className="text-gold">Hablan Solos</span>
             </h2>
           </Reveal>
 
-          <div className="grid md:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-center">
+          {/* 1 · Testimonio en video + citas */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-4">
             {/* Video testimonio — formato historia vertical */}
             <Reveal delay={0.15}>
-              <div className="mx-auto md:mx-0" style={{ width: 'min(280px, 100%)' }}>
+              <div className="mx-auto w-full max-w-[300px] lg:max-w-none">
                 {/* Marco estilo teléfono / Story */}
                 <div className="relative rounded-2xl overflow-hidden border border-gold/25 shadow-[0_0_40px_rgba(201,162,39,0.08)]" style={{ aspectRatio: '9/16' }}>
                   {/* Gradiente superior tipo Instagram Story */}
@@ -465,6 +543,8 @@ export default function EntrenaPage() {
               </div>
             </Reveal>
 
+            </div>
+            <div className="lg:col-span-8">
             {/* Citas */}
             <div className="space-y-10">
               <Reveal delay={0.2}>
@@ -510,6 +590,35 @@ export default function EntrenaPage() {
                 <p className="font-body text-xs text-mist/40 tracking-widest uppercase">Ediciones anteriores · 100% cupos agotados</p>
               </Reveal>
             </div>
+            </div>
+          </div>
+
+          {/* 2 · Eventos y práctica */}
+          <div className="mt-20 md:mt-28">
+            <Reveal>
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-8">
+                <div>
+                  <span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Eventos de Formación</span>
+                  <h3 className="font-display text-3xl md:text-4xl text-cream mt-2">Así se vive <span className="text-gold">cada edición</span></h3>
+                </div>
+                <p className="font-body text-sm text-mist/60 max-w-md">Sesiones presenciales y práctica guiada sobre modelo, paso a paso.</p>
+              </div>
+            </Reveal>
+            <MediaRow items={EVENT_VIDEOS} />
+          </div>
+
+          {/* 3 · Resultados */}
+          <div className="mt-20 md:mt-28">
+            <Reveal>
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-8">
+                <div>
+                  <span className="font-body text-xs tracking-[0.25em] text-gold uppercase">Resultados</span>
+                  <h3 className="font-display text-3xl md:text-4xl text-cream mt-2">Sonrisas <span className="text-gold">en movimiento</span></h3>
+                </div>
+                <p className="font-body text-sm text-mist/60 max-w-md">La naturalidad de la cerámica se aprecia mejor en video: luz, textura y forma.</p>
+              </div>
+            </Reveal>
+            <MediaRow items={RESULT_VIDEOS} />
           </div>
         </div>
       </section>
