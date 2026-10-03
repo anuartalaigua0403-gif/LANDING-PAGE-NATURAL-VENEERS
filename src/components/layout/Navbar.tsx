@@ -44,7 +44,7 @@ export default function Navbar() {
           <span className="font-display text-xl text-gold tracking-[0.15em]">VENEERS</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map((link) => (
             <Link href={link.href} key={link.href} className="font-body text-xs tracking-widest text-mist hover:text-gold transition-colors duration-300 uppercase">
               {link.label}
@@ -63,7 +63,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-6">
           <LanguageToggle />
-          <button className="md:hidden flex flex-col gap-1.5 w-6" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" aria-expanded={menuOpen}>
+          <button className="lg:hidden flex flex-col gap-1.5 w-6" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" aria-expanded={menuOpen}>
             <span className={`block h-px bg-cream transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
             <span className={`block h-px bg-cream transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
             <span className={`block h-px bg-cream transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
@@ -75,7 +75,7 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full left-0 right-0 bg-obsidian/95 backdrop-blur-xl border-b border-gold/10 py-6 px-6 flex flex-col gap-5"
+          className="lg:hidden absolute top-full left-0 right-0 bg-obsidian/95 backdrop-blur-xl border-b border-gold/10 py-6 px-6 flex flex-col gap-5"
         >
           {navLinks.map((link) => (
             <Link href={link.href} key={link.href} onClick={() => setMenuOpen(false)} className="font-body text-sm tracking-widest text-mist hover:text-gold transition-colors duration-300 uppercase">
