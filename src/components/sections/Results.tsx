@@ -94,24 +94,9 @@ function BeforeAfterSlider({ beforeSrc, afterSrc, alt, index }: SliderProps) {
   )
 }
 
-function StaticResult({ src, alt, index }: { src: string; alt: string; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-10%' }}
-      transition={{ delay: index * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative aspect-[4/3] overflow-hidden bg-jet group"
-    >
-      <Image src={src} alt={alt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105" />
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-    </motion.div>
-  )
-}
-
-const STATIC_RESULTS = [
-  { src: '/img/resultado-1.jpg', alt: 'Resultado de carillas — caso 1' },
-  { src: '/img/r4.jpg', alt: 'Resultado de carillas — caso 2' },
+const NEW_COMPARISONS = [
+  { beforeSrc: '/img/antes-caso1.jpg', afterSrc: '/img/resultado-1.jpg', alt: 'Caso 1' },
+  { beforeSrc: '/img/antes-caso2.jpg', afterSrc: '/img/r4.jpg', alt: 'Caso 2' },
 ]
 
 const COMPARISON = { beforeSrc: '/img/caso-antes.jpg', afterSrc: '/img/caso-despues.jpg', alt: 'Caso 3' }
@@ -144,8 +129,8 @@ export default function Results() {
           </motion.p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-1">
-          {STATIC_RESULTS.map((item, i) => (
-            <StaticResult key={item.src} src={item.src} alt={item.alt} index={i} />
+          {NEW_COMPARISONS.map((item, i) => (
+            <BeforeAfterSlider key={item.afterSrc} {...item} index={i} />
           ))}
           <BeforeAfterSlider {...COMPARISON} index={2} />
         </div>
