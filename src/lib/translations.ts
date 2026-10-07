@@ -198,8 +198,8 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     questionEs: '¿Cuál es el tiempo de entrega?',
     questionEn: 'What is the turnaround time?',
-    answerEs: 'El tiempo estándar es 10-15 días hábiles desde la recepción del modelo. Para casos urgentes ofrecemos servicio express de 7 días hábiles con coordinación previa.',
-    answerEn: 'Standard turnaround is 10-15 business days from model receipt. For urgent cases we offer an express 7-business-day service with prior coordination.',
+    answerEs: 'El tiempo de entrega es de 2 a 5 días hábiles desde la recepción del caso, según el grado de complejidad y el cronograma acordado.',
+    answerEn: 'Turnaround time is 2 to 5 business days from case receipt, depending on the complexity of the case and the agreed schedule.',
   },
   {
     questionEs: '¿Trabajan con clínicos fuera de Colombia?',
