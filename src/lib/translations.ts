@@ -171,7 +171,8 @@ export const PROCESS_STEPS: ProcessStep[] = [
     titleEn: 'Digital Design',
     descEs: 'Analizamos el caso clínico con software de diseño de sonrisa. Cada caso es único.',
     descEn: 'We analyze the clinical case with smile design software. Every case is unique.',
-    image: '/img/diseno-digital.jpg',
+    image: '/img/diseno-digital-3d.jpg',
+    focus: '50% 35%',
   },
   {
     number: '02',
@@ -179,7 +180,8 @@ export const PROCESS_STEPS: ProcessStep[] = [
     titleEn: 'Stratification',
     descEs: 'Nuestros ceramistas aplican cada capa de porcelana bajo magnificación microscópica.',
     descEn: 'Our ceramists apply each porcelain layer under microscopic magnification.',
-    image: '/img/proceso-2.jpg',
+    image: '/img/estratificacion.jpg',
+    focus: '50% 40%',
   },
   {
     number: '03',
@@ -187,7 +189,8 @@ export const PROCESS_STEPS: ProcessStep[] = [
     titleEn: 'Final QC',
     descEs: 'Revisión exhaustiva de morfología, color y translucidez antes de despacho.',
     descEn: 'Exhaustive review of morphology, color, and translucency before dispatch.',
-    image: '/img/proceso-3.jpg',
+    image: '/img/control-final.jpg',
+    focus: '50% 55%',
   },
 ]
 
