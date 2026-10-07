@@ -1,12 +1,20 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useT } from '@/hooks/useLanguage'
 import { ui } from '@/lib/translations'
+import { formatWhatsAppUrl } from '@/lib/utils'
+import { WA_LAB, WA_FORMACION, WA_MSG_LAB, WA_MSG_FORMACION } from '@/lib/whatsapp'
 
 export default function Footer() {
   const T = useT()
   const year = new Date().getFullYear()
+  const isTraining = (usePathname() || '').startsWith('/entrena')
+  const waUrl = isTraining
+    ? formatWhatsAppUrl(WA_FORMACION, WA_MSG_FORMACION)
+    : formatWhatsAppUrl(WA_LAB, WA_MSG_LAB)
+  const waLabel = isTraining ? '+57 302 424 0780' : '+57 304 383 8031'
 
   const navLinks = [
     { href: '/#products', label: T(ui.nav.products) },
@@ -36,8 +44,8 @@ export default function Footer() {
             ))}
           </div>
           <div className="flex flex-col gap-3">
-            <a href="https://wa.me/573043838031" target="_blank" rel="noopener noreferrer" className="font-body text-sm text-mist/70 hover:text-gold transition-colors duration-300">
-              +57 304 383 8031
+            <a href={waUrl} target="_blank" rel="noopener noreferrer" className="font-body text-sm text-mist/70 hover:text-gold transition-colors duration-300">
+              {waLabel}
             </a>
             <span className="font-body text-sm text-mist/40">{T(ui.footer.location)}</span>
           </div>
