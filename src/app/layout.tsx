@@ -7,6 +7,7 @@ import Cursor from '@/components/ui/Cursor'
 import Particles from '@/components/ui/Particles'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import WhatsAppFloat from '@/components/ui/WhatsAppFloat'
 
 export const metadata: Metadata = {
   title: 'Natural Veneers — Laboratorio Dental Premium | Colombia',
@@ -41,6 +42,7 @@ export default function RootLayout({
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <WhatsAppFloat />
           </LanguageProvider>
         </PreloaderProvider>
       </body>
