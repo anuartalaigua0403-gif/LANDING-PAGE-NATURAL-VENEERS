@@ -75,6 +75,7 @@ export default function Process() {
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover filter brightness-75"
+                    style={step.focus ? { objectPosition: step.focus } : undefined}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-jet to-transparent" />
                   <div className="absolute bottom-4 left-4 font-display text-5xl text-gold/20 font-bold">
