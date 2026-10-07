@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { formatWhatsAppUrl } from '@/lib/utils'
+import { WA_FORMACION, WA_MSG_FORMACION } from '@/lib/whatsapp'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -58,19 +59,19 @@ const PROGRAMS = [
     ],
   },
   {
-    id: 'zirconio',
+    id: 'feldespaticas',
     num: '03',
-    title: 'Zirconio Translúcido',
-    sub: 'Alta Translucidez · Última Generación',
-    desc: 'Técnicas de diseño y caracterización de zirconio multi-capa ultra-translúcido. Resultados estéticos comparables al feldespato con la resistencia del óxido de zirconio.',
-    hours: '24 h',
-    level: 'Intermedio',
+    title: 'Carillas Feldespáticas',
+    sub: 'Mínimo Espesor · Troquel Refractario',
+    desc: 'Carillas de porcelana feldespática ultrafinas para casos de preparación mínima. Aprende a construirlas sobre troquel refractario controlando espesor, adaptación marginal y translucidez, para que se integren ópticamente con el diente natural.',
+    hours: '',
+    level: 'Avanzado',
     topics: [
-      'Clasificación del zirconio monocapa y multi-capa',
-      'Flujo digital completo: STL · diseño · fresado',
-      'Sinterización controlada y dimensiones finales',
-      'Caracterización superficial y glaseado avanzado',
-      'Integración en flujos mixtos y rehabilitación total',
+      'Indicaciones y límites: espacio disponible, sustrato y color del muñón',
+      'Duplicado del modelo y troqueles refractarios',
+      'Construcción en mínimo espesor sin perder vitalidad de color',
+      'Ciclos de cocción, contracción y corrección de márgenes',
+      'Desinvestido, textura superficial, glaseado y entrega lista para cementar',
     ],
   },
 ]
@@ -224,10 +225,7 @@ export default function EntrenaPage() {
     heroVideoRef.current?.play().catch(() => {})
   }, [])
 
-  const whatsappUrl = formatWhatsAppUrl(
-    '573024240780',
-    'Hola, quiero reservar mi cupo en el entrenamiento de Natural Veneers SAS. Por favor envíenme información sobre la próxima fecha disponible.',
-  )
+  const whatsappUrl = formatWhatsAppUrl(WA_FORMACION, WA_MSG_FORMACION)
 
   return (
     <>
@@ -323,26 +321,28 @@ export default function EntrenaPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {PROGRAMS.map((prog, i) => (
               <Reveal key={prog.id} delay={i * 0.12}>
-                <div className="group relative border border-gold/10 bg-jet/40 p-8 cursor-pointer hover:border-gold/40 transition-all duration-500 overflow-hidden h-full flex flex-col" onMouseEnter={() => setActiveProgram(prog.id)} onMouseLeave={() => setActiveProgram(null)}>
+                <div className="nv-prog group relative p-8 cursor-pointer overflow-hidden h-full flex flex-col" onMouseEnter={() => setActiveProgram(prog.id)} onMouseLeave={() => setActiveProgram(null)}>
                   <motion.div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: activeProgram === prog.id ? 1 : 0 }} transition={{ duration: 0.3 }} />
                   <div className="relative z-10 flex flex-col h-full">
                     <div className="flex justify-between items-start mb-6">
-                      <span className="font-display text-5xl text-gold/20 group-hover:text-gold/35 transition-colors duration-300">{prog.num}</span>
-                      <span className="font-body text-[10px] tracking-widest text-gold/60 uppercase border border-gold/20 px-2 py-1">{prog.hours}</span>
+                      <span className="nv-prog-num font-display text-5xl">{prog.num}</span>
+                      {prog.hours && (
+                        <span className="font-body text-[10px] tracking-widest text-gold-bright uppercase border border-gold-bright/35 bg-gold/10 px-2 py-1">{prog.hours}</span>
+                      )}
                     </div>
                     <h3 className="font-display text-2xl text-cream mb-1">{prog.title}</h3>
-                    <p className="font-body text-xs text-gold/65 tracking-widest uppercase mb-4">{prog.sub}</p>
-                    <p className="font-body text-sm text-mist/60 leading-relaxed mb-6">{prog.desc}</p>
+                    <p className="font-body text-xs text-gold tracking-widest uppercase mb-4">{prog.sub}</p>
+                    <p className="font-body text-sm text-cream/70 leading-relaxed mb-6">{prog.desc}</p>
                     <div className="space-y-2 flex-1">
                       {prog.topics.map((topic) => (
                         <div key={topic} className="flex items-start gap-2">
                           <div className="w-1 h-1 rounded-full bg-gold mt-[7px] flex-shrink-0" />
-                          <span className="font-body text-xs text-mist/50 leading-relaxed">{topic}</span>
+                          <span className="font-body text-xs text-cream/60 leading-relaxed">{topic}</span>
                         </div>
                       ))}
                     </div>
-                    <div className="mt-8 pt-6 border-t border-gold/10 flex justify-between items-center">
-                      <span className="font-body text-[10px] text-mist/35 uppercase tracking-widest">{prog.level}</span>
+                    <div className="mt-8 pt-6 border-t border-gold/20 flex justify-between items-center">
+                      <span className="font-body text-[10px] text-gold-bright/55 uppercase tracking-widest">{prog.level}</span>
                       <a href="#reserva" className="font-body text-xs text-gold tracking-widest uppercase hover:text-gold-bright inline-flex items-center gap-1 transition-all duration-300 group-hover:gap-2">Inscribirme <span>→</span></a>
                     </div>
                   </div>
@@ -350,6 +350,23 @@ export default function EntrenaPage() {
               </Reveal>
             ))}
           </div>
+          <style>{`
+            .nv-prog{
+              background:linear-gradient(160deg,rgba(201,162,39,.13) 0%,rgba(201,162,39,.045) 38%,rgba(201,162,39,.02) 70%,rgba(240,204,106,.06) 100%),rgba(10,9,6,.55);
+              border:1px solid rgba(201,162,39,.24);
+              box-shadow:inset 0 1px 0 rgba(240,204,106,.18),0 20px 60px -30px rgba(201,162,39,.25);
+              backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+              transition:border-color .5s,box-shadow .5s,transform .5s cubic-bezier(.16,1,.3,1);
+            }
+            .nv-prog::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;z-index:1;
+              background:linear-gradient(90deg,transparent,rgba(240,204,106,.7),transparent)}
+            .nv-prog::after{content:"";position:absolute;top:-60%;left:-60%;width:40%;height:220%;transform:rotate(18deg);pointer-events:none;
+              background:linear-gradient(90deg,transparent,rgba(240,204,106,.08),transparent);transition:left .9s cubic-bezier(.16,1,.3,1)}
+            .nv-prog:hover{border-color:rgba(240,204,106,.5);box-shadow:inset 0 1px 0 rgba(240,204,106,.3),0 24px 70px -28px rgba(201,162,39,.45);transform:translateY(-4px)}
+            .nv-prog:hover::after{left:130%}
+            .nv-prog-num{background:linear-gradient(180deg,#F0CC6A,#7A5C10);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.75}
+            @media (prefers-reduced-motion:reduce){.nv-prog,.nv-prog::after{transition:none}.nv-prog:hover{transform:none}}
+          `}</style>
         </div>
       </section>
 

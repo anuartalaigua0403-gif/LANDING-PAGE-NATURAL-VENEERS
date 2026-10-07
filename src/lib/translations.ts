@@ -118,6 +118,12 @@ export const ui = {
     tagline: { es: 'Arte en porcelana. Excelencia en cada detalle.', en: 'Art in porcelain. Excellence in every detail.' },
     rights: { es: 'Todos los derechos reservados.', en: 'All rights reserved.' },
     location: { es: 'Colombia', en: 'Colombia' },
+    igLabel: { es: 'Síguenos', en: 'Follow us' },
+    igTitle: { es: 'Conócenos en Instagram', en: 'Get to know us on Instagram' },
+    igText: {
+      es: 'Casos reales, procesos y el día a día de nuestro laboratorio. Te invitamos a conocernos.',
+      en: 'Real cases, our process and everyday life in our lab. Come and get to know us.',
+    },
   },
 } as const
 
@@ -171,7 +177,8 @@ export const PROCESS_STEPS: ProcessStep[] = [
     titleEn: 'Digital Design',
     descEs: 'Analizamos el caso clínico con software de diseño de sonrisa. Cada caso es único.',
     descEn: 'We analyze the clinical case with smile design software. Every case is unique.',
-    image: '/img/diseno-digital.jpg',
+    image: '/img/diseno-digital-3d.jpg',
+    focus: '50% 35%',
   },
   {
     number: '02',
@@ -179,7 +186,8 @@ export const PROCESS_STEPS: ProcessStep[] = [
     titleEn: 'Stratification',
     descEs: 'Nuestros ceramistas aplican cada capa de porcelana bajo magnificación microscópica.',
     descEn: 'Our ceramists apply each porcelain layer under microscopic magnification.',
-    image: '/img/proceso-2.jpg',
+    image: '/img/estratificacion.jpg',
+    focus: '50% 40%',
   },
   {
     number: '03',
@@ -187,7 +195,8 @@ export const PROCESS_STEPS: ProcessStep[] = [
     titleEn: 'Final QC',
     descEs: 'Revisión exhaustiva de morfología, color y translucidez antes de despacho.',
     descEn: 'Exhaustive review of morphology, color, and translucency before dispatch.',
-    image: '/img/proceso-3.jpg',
+    image: '/img/control-final.jpg',
+    focus: '50% 55%',
   },
 ]
 
@@ -195,8 +204,8 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     questionEs: '¿Cuál es el tiempo de entrega?',
     questionEn: 'What is the turnaround time?',
-    answerEs: 'El tiempo estándar es 10-15 días hábiles desde la recepción del modelo. Para casos urgentes ofrecemos servicio express de 7 días hábiles con coordinación previa.',
-    answerEn: 'Standard turnaround is 10-15 business days from model receipt. For urgent cases we offer an express 7-business-day service with prior coordination.',
+    answerEs: 'El tiempo de entrega es de 2 a 5 días hábiles desde la recepción del caso, según el grado de complejidad y el cronograma acordado.',
+    answerEn: 'Turnaround time is 2 to 5 business days from case receipt, depending on the complexity of the case and the agreed schedule.',
   },
   {
     questionEs: '¿Trabajan con clínicos fuera de Colombia?',
