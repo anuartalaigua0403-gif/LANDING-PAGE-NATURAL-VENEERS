@@ -118,6 +118,12 @@ export const ui = {
     tagline: { es: 'Arte en porcelana. Excelencia en cada detalle.', en: 'Art in porcelain. Excellence in every detail.' },
     rights: { es: 'Todos los derechos reservados.', en: 'All rights reserved.' },
     location: { es: 'Colombia', en: 'Colombia' },
+    igLabel: { es: 'Síguenos', en: 'Follow us' },
+    igTitle: { es: 'Conócenos en Instagram', en: 'Get to know us on Instagram' },
+    igText: {
+      es: 'Casos reales, procesos y el día a día de nuestro laboratorio. Te invitamos a conocernos.',
+      en: 'Real cases, our process and everyday life in our lab. Come and get to know us.',
+    },
   },
 } as const
 
