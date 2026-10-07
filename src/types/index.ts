@@ -17,6 +17,8 @@ export interface ProcessStep {
   descEs: string
   descEn: string
   image: string
+  /** CSS object-position para encuadrar la foto (ej. '50% 40%') */
+  focus?: string
 }
 
 export interface FAQItem {
