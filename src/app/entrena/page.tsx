@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { formatWhatsAppUrl } from '@/lib/utils'
+import { WA_FORMACION, WA_MSG_FORMACION } from '@/lib/whatsapp'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -224,10 +225,7 @@ export default function EntrenaPage() {
     heroVideoRef.current?.play().catch(() => {})
   }, [])
 
-  const whatsappUrl = formatWhatsAppUrl(
-    '573024240780',
-    'Hola, quiero reservar mi cupo en el entrenamiento de Natural Veneers SAS. Por favor envíenme información sobre la próxima fecha disponible.',
-  )
+  const whatsappUrl = formatWhatsAppUrl(WA_FORMACION, WA_MSG_FORMACION)
 
   return (
     <>
