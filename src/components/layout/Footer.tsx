@@ -10,7 +10,7 @@ import { WA_LAB, WA_FORMACION, WA_MSG_LAB, WA_MSG_FORMACION } from '@/lib/whatsa
 export default function Footer() {
   const T = useT()
   const year = new Date().getFullYear()
-  const isTraining = (usePathname() || '').startsWith('/entrena')
+  const isTraining = /^\/(entrena|academia)/.test(usePathname() || '')
   const waUrl = isTraining
     ? formatWhatsAppUrl(WA_FORMACION, WA_MSG_FORMACION)
     : formatWhatsAppUrl(WA_LAB, WA_MSG_LAB)
