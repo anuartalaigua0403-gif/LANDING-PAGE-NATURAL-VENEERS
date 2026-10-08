@@ -6,7 +6,7 @@ import { WA_LAB, WA_FORMACION, WA_MSG_LAB, WA_MSG_FORMACION } from '@/lib/whatsa
 
 export default function WhatsAppFloat() {
   const pathname = usePathname()
-  const isTraining = pathname?.startsWith('/entrena') ?? false
+  const isTraining = /^\/(entrena|academia)/.test(pathname || '')
 
   const href = isTraining
     ? formatWhatsAppUrl(WA_FORMACION, WA_MSG_FORMACION)
