@@ -20,18 +20,18 @@ export const PROFILES = ['Técnico dental / Ceramista', 'Odontólogo(a)', 'Estud
 export const LEVELS = ['Estoy empezando', 'Intermedio', 'Avanzado']
 export const INTERESTS = ['Cursos en video', 'Ebooks y guías', 'Formación presencial', 'Comunidad privada']
 export const COUNTRY_CODES = [
-  { code: '57', label: '🇨🇴 +57' },
-  { code: '52', label: '🇲🇽 +52' },
-  { code: '1', label: '🇺🇸 +1' },
-  { code: '593', label: '🇪🇨 +593' },
-  { code: '51', label: '🇵🇪 +51' },
-  { code: '56', label: '🇨🇱 +56' },
-  { code: '54', label: '🇦🇷 +54' },
-  { code: '58', label: '🇻🇪 +58' },
-  { code: '507', label: '🇵🇦 +507' },
-  { code: '506', label: '🇨🇷 +506' },
-  { code: '34', label: '🇪🇸 +34' },
-  { code: '55', label: '🇧🇷 +55' },
+  { code: '57', label: 'CO +57' },
+  { code: '52', label: 'MX +52' },
+  { code: '1', label: 'US +1' },
+  { code: '593', label: 'EC +593' },
+  { code: '51', label: 'PE +51' },
+  { code: '56', label: 'CL +56' },
+  { code: '54', label: 'AR +54' },
+  { code: '58', label: 'VE +58' },
+  { code: '507', label: 'PA +507' },
+  { code: '506', label: 'CR +506' },
+  { code: '34', label: 'ES +34' },
+  { code: '55', label: 'BR +55' },
 ]
 
 // Video gratuito (Vimeo o YouTube no listado). Mientras sea '', se muestra el recuadro de edición.
