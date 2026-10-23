@@ -84,7 +84,17 @@ export default function WaitlistForm() {
     ev.preventDefault()
     const e = validate(d)
     setErrors(e)
-    if (Object.keys(e).length) return
+    const bad = (Object.keys(e) as (keyof Data)[])
+    if (bad.length) {
+      const order: [keyof Data, string][] = [['nombre', 'nv-nombre'], ['correo', 'nv-correo'], ['telefono', 'nv-tel'], ['perfil', 'nv-perfil'], ['autoriza', 'nv-autoriza']]
+      const first = order.find(([k]) => bad.includes(k))
+      const el = first ? document.getElementById(first[1]) : null
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        if (el instanceof HTMLInputElement) setTimeout(() => el.focus({ preventScroll: true }), 400)
+      }
+      return
+    }
     if (d.website) { setStatus('done'); setSent(d); return } // bot
     setStatus('sending')
     try {
@@ -102,6 +112,7 @@ export default function WaitlistForm() {
       }
       setSent(d)
       setStatus('done')
+      setTimeout(() => document.getElementById('acceso')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
     } catch {
       setStatus('error')
     }
@@ -181,7 +192,7 @@ export default function WaitlistForm() {
 
         <div className="sm:col-span-2">
           <span className={lbl}>¿Cuál es tu perfil? *</span>
-          <div className="flex flex-wrap gap-2.5 mt-3" role="radiogroup" aria-label="Perfil">
+          <div id="nv-perfil" className="flex flex-wrap gap-2.5 mt-3 scroll-mt-32" role="radiogroup" aria-label="Perfil">
             {PROFILES.map((p) => (
               <button key={p} type="button" role="radio" aria-checked={d.perfil === p} onClick={() => set('perfil', p)} className={`nv-chip ${d.perfil === p ? 'on' : ''}`}>{p}</button>
             ))}
@@ -212,7 +223,7 @@ export default function WaitlistForm() {
 
         <div className="sm:col-span-2">
           <label className="flex items-start gap-3 cursor-pointer select-none">
-            <input type="checkbox" checked={d.autoriza} onChange={(e) => set('autoriza', e.target.checked)} className="nv-check-in mt-0.5" />
+            <input id="nv-autoriza" type="checkbox" checked={d.autoriza} onChange={(e) => set('autoriza', e.target.checked)} className="nv-check-in mt-0.5" />
             <span className="font-body text-xs text-mist/70 leading-relaxed">
               Autorizo a Natural Veneers S.A.S. a tratar mis datos personales para enviarme información sobre la Academia, conforme a la Ley 1581 de 2012. Puedo solicitar su eliminación en cualquier momento.
             </span>
@@ -221,6 +232,11 @@ export default function WaitlistForm() {
         </div>
       </div>
 
+      {Object.values(errors).some(Boolean) && (
+        <p className="mt-8 -mb-4 text-center font-body text-xs text-[#e8a0a0]" role="alert">
+          Revisa los campos marcados en rojo para completar tu registro.
+        </p>
+      )}
       <button type="submit" disabled={status === 'sending'} className="nv-cta relative mt-10 w-full inline-flex items-center justify-center gap-3 px-8 py-5 font-body text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-void overflow-hidden disabled:opacity-70">
         <span className="relative z-10">{status === 'sending' ? 'Enviando…' : 'Quiero acceso anticipado'}</span>
       </button>
