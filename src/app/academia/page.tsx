@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import Countdown from '@/components/academia/Countdown'
+import WaitlistForm from '@/components/academia/WaitlistForm'
 import {
   HOTMART_URL,
   CTA_LABEL,
@@ -72,7 +74,11 @@ export default function AcademiaPage() {
   const [showBar, setShowBar] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setShowBar(window.scrollY > 900)
+    const onScroll = () => {
+      const f = document.getElementById('acceso')?.getBoundingClientRect()
+      const formInView = f ? f.top < window.innerHeight && f.bottom > 0 : false
+      setShowBar(window.scrollY > 900 && !formInView)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -105,6 +111,11 @@ export default function AcademiaPage() {
             <p className="font-body text-base md:text-lg text-mist/80 max-w-2xl mx-auto mt-8 leading-relaxed">
               Formación online en cerámica dental de alta estética, con el método que aplicamos cada día en el laboratorio Natural Veneers.
             </p>
+          </Reveal>
+
+          {/* Cuenta regresiva al lanzamiento */}
+          <Reveal delay={0.25} className="mt-12">
+            <Countdown />
           </Reveal>
 
           {/* Video gratuito */}
@@ -365,6 +376,48 @@ export default function AcademiaPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ---------- ACCESO ANTICIPADO ---------- */}
+      <section id="acceso" className="relative py-28 px-6 overflow-hidden scroll-mt-24">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/3 -left-40 w-[620px] h-[620px] rounded-full opacity-[0.08]" style={{ background: 'radial-gradient(circle, #C9A227 0%, transparent 70%)' }} />
+        </div>
+        <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-14 lg:gap-20 items-start">
+          <div className="lg:sticky lg:top-32">
+            <Reveal><Label>Acceso anticipado</Label></Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="font-display text-4xl md:text-6xl leading-tight">
+                Sé el primero <span className="text-gold italic block">en saberlo</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="font-body text-mist/75 mt-6 leading-relaxed max-w-md">
+                La Academia abre en febrero de 2027. Déjanos tus datos y te avisaremos antes que a nadie, con toda la información de los programas.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ul className="mt-10 space-y-5">
+                {[
+                  ['Aviso antes del lanzamiento', 'Te escribimos primero, antes de abrir al público.'],
+                  ['Información de los programas', 'Módulos, materiales y fechas, directo a tu correo o WhatsApp.'],
+                  ['Sin compromiso', 'Registrarte no tiene costo ni te obliga a comprar.'],
+                ].map(([t, d]) => (
+                  <li key={t} className="flex gap-4">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                    <div>
+                      <p className="font-display text-xl text-cream">{t}</p>
+                      <p className="font-body text-sm text-mist/60 mt-1">{d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1}>
+            <WaitlistForm />
+          </Reveal>
         </div>
       </section>
 
