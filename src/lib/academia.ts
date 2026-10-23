@@ -1,8 +1,10 @@
 // Academia Natural Veneers — datos del prototipo (un solo lugar para editarlos)
 // Todo lo marcado [POR CONFIRMAR] es provisional hasta tener el material real.
 
-// Enlace de pago de Hotmart [POR CONFIRMAR]. Mientras sea '', los botones bajan a la oferta.
-export const HOTMART_URL = ''
+// Enlace de pago de Hotmart (checkout). Si se deja '', los botones bajan a la oferta.
+// Ejemplo actual: Guía de microestratificación cerámica (producto 8781394).
+// OJO: el producto está en Borrador en Hotmart; el pago funciona cuando se publique.
+export const HOTMART_URL = 'https://pay.hotmart.com/C108135779I'
 
 export const CTA_LABEL = 'Quiero formarme con Natural Veneers'
 
@@ -60,6 +62,29 @@ export const MODULES: Module[] = [
     desc: 'Registrar, mostrar y presentar casos de alto nivel.',
     image: '/img/training/resultado-frontal.jpg',
     duration: '— min',
+  },
+]
+
+export type ShopProduct = {
+  type: string
+  title: string
+  desc: string
+  image: string
+  price: string
+  checkoutUrl: string
+  salesUrl?: string
+}
+
+// Productos disponibles en Hotmart (se compran directo en el checkout de Hotmart)
+export const SHOP_PRODUCTS: ShopProduct[] = [
+  {
+    type: 'eBook',
+    title: 'Guía de microestratificación cerámica',
+    desc: 'Guía digital sobre la técnica de microestratificación en cerámica dental. [POR CONFIRMAR — descripción final]',
+    image: '/img/estratificacion.jpg',
+    price: '[POR CONFIRMAR]',
+    checkoutUrl: 'https://pay.hotmart.com/C108135779I',
+    salesUrl: 'https://go.hotmart.com/C108135779I',
   },
 ]
 
