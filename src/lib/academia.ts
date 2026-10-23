@@ -1,10 +1,10 @@
 // Academia Natural Veneers — datos del prototipo (un solo lugar para editarlos)
 // Todo lo marcado [POR CONFIRMAR] es provisional hasta tener el material real.
 
-// Enlace de pago de Hotmart (checkout). Si se deja '', los botones bajan a la oferta.
-// Ejemplo actual: Guía de microestratificación cerámica (producto 8781394).
-// OJO: el producto está en Borrador en Hotmart; el pago funciona cuando se publique.
-export const HOTMART_URL = 'https://pay.hotmart.com/C108135779I'
+// Destino de los botones "Quiero formarme con Natural Veneers".
+// Mientras la plataforma está en desarrollo van al formulario de acceso anticipado (#acceso).
+// Al lanzar, poner aquí el enlace de pago del programa en Hotmart.
+export const HOTMART_URL = ''
 
 export const CTA_LABEL = 'Quiero formarme con Natural Veneers'
 
