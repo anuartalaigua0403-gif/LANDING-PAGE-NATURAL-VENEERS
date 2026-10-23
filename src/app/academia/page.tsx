@@ -11,6 +11,7 @@ import {
   OUTCOMES,
   INCLUDES,
   FAQS,
+  SHOP_PRODUCTS,
 } from '@/lib/academia'
 
 const ease = [0.16, 1, 0.3, 1] as const
@@ -235,6 +236,57 @@ export default function AcademiaPage() {
                 <CtaButton size="md" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- PRODUCTOS DISPONIBLES (Hotmart) ---------- */}
+      <section id="productos" className="relative py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <Reveal><Label>Disponible ahora</Label></Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="font-display text-4xl md:text-6xl">
+                Empieza hoy <span className="text-gold">con nuestras guías</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="font-body text-sm text-mist/60 mt-4">Pago seguro en Hotmart · Acceso inmediato después de la compra</p>
+            </Reveal>
+          </div>
+          <div className="grid gap-8 justify-center" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 420px))' }}>
+            {SHOP_PRODUCTS.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.08}>
+                <article className="nv-module group h-full flex flex-col overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image src={p.image} alt={p.title} fill sizes="(max-width: 640px) 100vw, 420px" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent" />
+                    <span className="absolute top-4 left-4 px-3 py-1 bg-gold text-void font-body text-[10px] font-semibold tracking-[0.25em] uppercase">{p.type}</span>
+                  </div>
+                  <div className="p-7 flex flex-col flex-1">
+                    <h3 className="font-display text-3xl leading-tight mb-3">{p.title}</h3>
+                    <p className="font-body text-sm text-mist/70 leading-relaxed mb-6 flex-1">{p.desc}</p>
+                    <p className="font-body text-xs tracking-[0.2em] uppercase text-gold mb-6">Precio: {p.price}</p>
+                    <a
+                      href={p.checkoutUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="nv-cta group/btn relative inline-flex items-center justify-center gap-3 px-6 py-4 text-xs font-body font-semibold tracking-[0.18em] uppercase text-void overflow-hidden"
+                    >
+                      <span className="relative z-10">Comprar la guía</span>
+                      <svg className="relative z-10 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </a>
+                    {p.salesUrl && (
+                      <a href={p.salesUrl} target="_blank" rel="noopener noreferrer" className="mt-4 text-center font-body text-xs tracking-[0.2em] uppercase text-mist/70 hover:text-gold transition-colors">
+                        Ver más detalles
+                      </a>
+                    )}
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
