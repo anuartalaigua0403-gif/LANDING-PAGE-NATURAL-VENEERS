@@ -17,7 +17,7 @@ import {
 } from '@/lib/academia'
 
 const ease = [0.16, 1, 0.3, 1] as const
-const ctaHref = HOTMART_URL || '#oferta'
+const ctaHref = HOTMART_URL || '#acceso'
 const ctaExternal = Boolean(HOTMART_URL)
 
 function Reveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -161,7 +161,7 @@ export default function AcademiaPage() {
 
           <Reveal delay={0.35} className="mt-12 flex flex-col items-center gap-4">
             <CtaButton />
-            <p className="font-body text-xs text-mist/60 tracking-wide">Pago seguro y acceso inmediato a través de Hotmart</p>
+            <p className="font-body text-xs text-mist/60 tracking-wide">Plataforma en desarrollo · Sé el primero en saber cuándo abre</p>
           </Reveal>
         </div>
       </section>
@@ -242,7 +242,7 @@ export default function AcademiaPage() {
                 <p className="font-body text-[11px] tracking-[0.3em] uppercase text-gold mb-3">Contenido exclusivo para miembros</p>
                 <h3 className="font-display text-3xl md:text-4xl mb-4">¿Quieres ver el programa completo?</h3>
                 <p className="font-body text-sm text-mist/75 mb-8 leading-relaxed">
-                  Únete a la formación y desbloquea todos los módulos, los ebooks y la comunidad.
+                  La plataforma está en desarrollo. Déjanos tus datos y sé el primero en saber cuándo se desbloquean los módulos.
                 </p>
                 <CtaButton size="md" />
               </div>
@@ -394,7 +394,7 @@ export default function AcademiaPage() {
             </Reveal>
             <Reveal delay={0.15}>
               <p className="font-body text-mist/75 mt-6 leading-relaxed max-w-md">
-                La Academia abre en febrero de 2027. Déjanos tus datos y te avisaremos antes que a nadie, con toda la información de los programas.
+                Nuestra plataforma está en desarrollo y abrirá en febrero de 2027. Sé el primero en saber cuándo esté disponible: llena el formulario y te avisaremos antes que a nadie.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -464,7 +464,7 @@ export default function AcademiaPage() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="font-body text-mist/75 mt-8 mb-12 leading-relaxed">
-              Precio y condiciones [POR CONFIRMAR]. El pago, el acceso y la garantía se gestionan en Hotmart.
+              La plataforma abre en febrero de 2027. Regístrate y te avisaremos primero.
             </p>
           </Reveal>
           <Reveal delay={0.3}><CtaButton /></Reveal>
