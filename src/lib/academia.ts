@@ -12,9 +12,10 @@ export const CTA_LABEL = 'Quiero formarme con Natural Veneers'
 export const LAUNCH_DATE = '2027-02-01T00:00:00-05:00'
 export const LAUNCH_LABEL = 'Febrero 2027'
 
-// URL del Web App de Google Apps Script que guarda los registros en Google Sheets.
-// Mientras sea '', los registros se envían solo por WhatsApp.
-export const LEADS_ENDPOINT = ''
+// URL del Web App de Google Apps Script que guarda los registros en Google Sheets
+// (hoja "PARTICIPANTES INTERESADO ACADEMIA 2027", cuenta gerencia@naturalveneers.co).
+// Si se deja '', los registros se envían solo por WhatsApp.
+export const LEADS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzrgQJoir-hlMvQ6k1uDzsm4-flRNjRUciubNcKVWfAE7tgMulQzddwdd8EeFaiNYzT/exec'
 
 export const PROFILES = ['Técnico dental / Ceramista', 'Odontólogo(a)', 'Estudiante', 'Laboratorio o clínica', 'Otro']
 export const LEVELS = ['Estoy empezando', 'Intermedio', 'Avanzado']
