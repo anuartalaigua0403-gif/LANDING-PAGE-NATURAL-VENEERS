@@ -8,6 +8,32 @@ export const HOTMART_URL = 'https://pay.hotmart.com/C108135779I'
 
 export const CTA_LABEL = 'Quiero formarme con Natural Veneers'
 
+// Lanzamiento oficial [POR CONFIRMAR día exacto]. 1 de febrero de 2027, 00:00 hora Colombia (UTC-5).
+export const LAUNCH_DATE = '2027-02-01T00:00:00-05:00'
+export const LAUNCH_LABEL = 'Febrero 2027'
+
+// URL del Web App de Google Apps Script que guarda los registros en Google Sheets.
+// Mientras sea '', los registros se envían solo por WhatsApp.
+export const LEADS_ENDPOINT = ''
+
+export const PROFILES = ['Técnico dental / Ceramista', 'Odontólogo(a)', 'Estudiante', 'Laboratorio o clínica', 'Otro']
+export const LEVELS = ['Estoy empezando', 'Intermedio', 'Avanzado']
+export const INTERESTS = ['Cursos en video', 'Ebooks y guías', 'Formación presencial', 'Comunidad privada']
+export const COUNTRY_CODES = [
+  { code: '57', label: '🇨🇴 +57' },
+  { code: '52', label: '🇲🇽 +52' },
+  { code: '1', label: '🇺🇸 +1' },
+  { code: '593', label: '🇪🇨 +593' },
+  { code: '51', label: '🇵🇪 +51' },
+  { code: '56', label: '🇨🇱 +56' },
+  { code: '54', label: '🇦🇷 +54' },
+  { code: '58', label: '🇻🇪 +58' },
+  { code: '507', label: '🇵🇦 +507' },
+  { code: '506', label: '🇨🇷 +506' },
+  { code: '34', label: '🇪🇸 +34' },
+  { code: '55', label: '🇧🇷 +55' },
+]
+
 // Video gratuito (Vimeo o YouTube no listado). Mientras sea '', se muestra el recuadro de edición.
 export const FREE_VIDEO_EMBED = ''
 
