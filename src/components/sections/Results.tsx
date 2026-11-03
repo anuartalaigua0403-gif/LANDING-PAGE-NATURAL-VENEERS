@@ -95,8 +95,8 @@ function BeforeAfterSlider({ beforeSrc, afterSrc, alt, index }: SliderProps) {
 }
 
 const NEW_COMPARISONS = [
-  { beforeSrc: '/img/antes-caso1.jpg', afterSrc: '/img/resultado-1.jpg', alt: 'Caso 1' },
-  { beforeSrc: '/img/antes-caso2.jpg', afterSrc: '/img/r4.jpg', alt: 'Caso 2' },
+  { beforeSrc: '/img/antes-caso2.jpg', afterSrc: '/img/resultado-1.jpg', alt: 'Caso 1' },
+  { beforeSrc: '/img/antes-caso1.jpg', afterSrc: '/img/r4.jpg', alt: 'Caso 2' },
 ]
 
 const COMPARISON = { beforeSrc: '/img/caso-antes.jpg', afterSrc: '/img/caso-despues.jpg', alt: 'Caso 3' }
