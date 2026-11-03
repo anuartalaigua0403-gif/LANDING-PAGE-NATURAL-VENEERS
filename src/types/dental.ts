@@ -4,7 +4,7 @@ import type { BufferGeometry } from 'three'
 export type AnatomyKey = 'enamel' | 'dentin' | 'pulp' | 'canals' | 'cementum' | 'root'
 
 /** Capas de la carilla, en el orden en que se construyen. */
-export type VeneerLayerKey = 'structure' | 'body' | 'layering' | 'characterization' | 'glaze'
+export type VeneerLayerKey = 'design' | 'dentin' | 'effects' | 'enamel' | 'glaze'
 
 /** Geometrías que necesita la escena. Vienen del GLB profesional o del modelo provisional. */
 export interface ToothGeometries {
