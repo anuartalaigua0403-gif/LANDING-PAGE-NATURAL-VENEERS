@@ -45,14 +45,6 @@ function makeMaterials(tier: 'high' | 'low') {
     sheen: 0.35, sheenColor: new THREE.Color('#ffffff'), ior: 1.63, specularIntensity: 0.9,
     transparent: true, depthWrite: false, bumpMap: getPerikymataTexture() ?? undefined, bumpScale: 1.1,
   })
-  if (tier === 'high') {
-    // Translucidez real: la luz atraviesa el esmalte y deja ver la dentina (mamelones) con tono cálido
-    enamel.transmission = 0.5
-    enamel.thickness = 0.45
-    enamel.attenuationColor = new THREE.Color('#F0D6A6')
-    enamel.attenuationDistance = 1.1
-    enamel.transparent = false
-  }
   const dentin = new THREE.MeshPhysicalMaterial({
     vertexColors: true, roughness: 0.62, sheen: 0.3, sheenColor: new THREE.Color('#f3e2c0'), transparent: true,
     map: getTubulesColor() ?? undefined, bumpMap: getTubulesBump() ?? undefined, bumpScale: 0.9,

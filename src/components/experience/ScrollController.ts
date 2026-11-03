@@ -68,7 +68,6 @@ export function createMasterTimeline(opts: {
 
   // ── 03 DIGITAL ENGINEERING (0.35 – 0.55)
   tl.to(xp, { explode: 0, camZ: 10.4, shiftX: 1.6, duration: 0.05 }, 0.35)
-  tl.to(xp, { dissolve: 1, duration: 0.1, ease: 'none' }, 0.355)
   tl.to(xp, { digital: 1, tooth: 0.22, duration: 0.06 }, 0.37)
   tl.to(xp, { rotY: TAU + 0.5, duration: 0.18, ease: 'none' }, 0.37)
   tl.to(xp, { digital: 0, duration: 0.04 }, 0.53)
