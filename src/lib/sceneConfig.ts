@@ -1,6 +1,6 @@
 import type { AnatomyLabel, Chapter, VeneerLayerKey } from '@/types/dental'
 
-/** Paleta de The Anatomy Experience (solo para /anatomia). */
+/** Paleta de la Experiencia Anatómica (solo para /anatomia). */
 export const PALETTE = {
   black: '#050505',
   navy: '#081020',
@@ -36,10 +36,10 @@ export const MODELS = {
     available: false,
     url: '/models/veneer/veneer-layers.glb',
     nodes: {
-      structure: 'Structure',
-      body: 'Body',
-      layering: 'Layering',
-      characterization: 'Characterization',
+      design: 'Design',
+      dentin: 'CeramicDentin',
+      effects: 'IncisalEffects',
+      enamel: 'CeramicEnamel',
       glaze: 'Glaze',
     } satisfies Record<VeneerLayerKey, string>,
   },
@@ -47,11 +47,11 @@ export const MODELS = {
 
 /** Capítulos y su tramo dentro del progreso total del scroll (0 → 1). */
 export const CHAPTERS: Chapter[] = [
-  { id: 'origin', index: '01', label: 'The Origin', start: 0, end: 0.15 },
-  { id: 'anatomy', index: '02', label: 'The Anatomy', start: 0.15, end: 0.35 },
-  { id: 'engineering', index: '03', label: 'Digital Engineering', start: 0.35, end: 0.55 },
-  { id: 'craftsmanship', index: '04', label: 'Craftsmanship', start: 0.55, end: 0.8 },
-  { id: 'perfection', index: '05', label: 'The Perfection', start: 0.8, end: 1 },
+  { id: 'origin', index: '01', label: 'El origen', start: 0, end: 0.15 },
+  { id: 'anatomy', index: '02', label: 'La anatomía', start: 0.15, end: 0.35 },
+  { id: 'engineering', index: '03', label: 'Ingeniería digital', start: 0.35, end: 0.55 },
+  { id: 'craftsmanship', index: '04', label: 'Artesanía', start: 0.55, end: 0.8 },
+  { id: 'perfection', index: '05', label: 'La perfección', start: 0.8, end: 1 },
 ]
 
 /** Altura total del recorrido de scroll, en % de la altura de pantalla. */
@@ -91,23 +91,24 @@ export const ANATOMY_LABELS: AnatomyLabel[] = [
     key: 'cementum',
     name: 'Cemento radicular',
     text: 'Capa delgada que recubre la raíz y la une al ligamento periodontal.',
-    anchor: [0.42, -1.2, 0.15],
+    anchor: [0.36, -1.2, 0.1],
     side: 'right',
   },
   {
     key: 'root',
     name: 'Raíz',
     text: 'Porción del diente anclada en el hueso alveolar.',
-    anchor: [-0.3, -2.1, 0.1],
+    anchor: [-0.24, -2.1, 0.05],
     side: 'left',
   },
 ]
 
-/** Pasos de construcción de la carilla (escena 04). */
-export const VENEER_STEPS: { key: VeneerLayerKey; name: string }[] = [
-  { key: 'structure', name: 'Diseño de la estructura' },
-  { key: 'body', name: 'Cuerpo cerámico' },
-  { key: 'layering', name: 'Estratificación' },
-  { key: 'characterization', name: 'Caracterización' },
-  { key: 'glaze', name: 'Acabado y pulido' },
+/** Pasos de la estratificación de la carilla (escena 04), técnica de cut-back. */
+export const VENEER_STEPS: { key: string; name: string }[] = [
+  { key: 'design', name: 'Diseño de la carilla' },
+  { key: 'dentin', name: 'Dentina cerámica' },
+  { key: 'cutback', name: 'Recorte (cut-back) y mamelones' },
+  { key: 'effects', name: 'Efectos incisales y halo' },
+  { key: 'enamel', name: 'Esmalte cerámico' },
+  { key: 'glaze', name: 'Glaseado y pulido' },
 ]
