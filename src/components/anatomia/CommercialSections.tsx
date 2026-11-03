@@ -12,7 +12,7 @@ export function ExpertiseSection() {
     <section id="expertise" className="border-t border-white/5 bg-[#050505] py-24 sm:py-32">
       <div className={`${wrap} grid gap-12 md:grid-cols-[1fr_1.2fr] md:gap-20`}>
         <div>
-          <p className={eyebrow}>Our Expertise</p>
+          <p className={eyebrow}>Quiénes somos</p>
           <h2 className={`${h2} mt-5`}>Pasión por la<br /><span className="italic text-[#E8D3A0]">excelencia dental</span></h2>
         </div>
         <div className="space-y-6 font-body text-[15px] leading-relaxed text-[#A1A1AA]">
@@ -43,7 +43,7 @@ export function MaterialsSection() {
   return (
     <section id="materiales" className="bg-[#081020]/40 py-24 sm:py-32">
       <div className={wrap}>
-        <p className={eyebrow}>Materials &amp; Technology</p>
+        <p className={eyebrow}>Materiales y tecnología</p>
         <h2 className={`${h2} mt-5 max-w-2xl`}>Materiales y soluciones</h2>
         <div className="mt-14 grid gap-px overflow-hidden border border-white/5 bg-white/5 sm:grid-cols-2 lg:grid-cols-5">
           {MATERIALS.map((m, i) => (
@@ -65,7 +65,7 @@ export function ProcessSection() {
   return (
     <section id="proceso" className="bg-[#050505] py-24 sm:py-32">
       <div className={wrap}>
-        <p className={eyebrow}>Our Process</p>
+        <p className={eyebrow}>Nuestro proceso</p>
         <h2 className={`${h2} mt-5`}>Flujo de trabajo</h2>
         <ol className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-7">
           {STEPS.map((s, i) => (
@@ -87,8 +87,8 @@ export function DentistsSection() {
     <section id="odontologos" className="border-t border-white/5 bg-[#050505] py-24 sm:py-32">
       <div className={`${wrap} grid gap-12 md:grid-cols-2`}>
         <div>
-          <p className={eyebrow}>For Dentists</p>
-          <h2 className={`${h2} mt-5`}>Para odontólogos</h2>
+          <p className={eyebrow}>Para odontólogos</p>
+          <h2 className={`${h2} mt-5`}>Trabajemos juntos</h2>
           <p className="mt-6 max-w-md font-body text-[15px] leading-relaxed text-[#A1A1AA]">
             [POR CONFIRMAR: texto para odontólogos — cómo enviar casos, tiempos y condiciones.]
           </p>
@@ -112,7 +112,7 @@ export function ContactCTA() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,164,92,0.12),transparent_60%)]" />
       <div className={`${wrap} relative text-center`}>
         <p className={eyebrow}>Natural Veneers</p>
-        <h2 className="mt-6 font-display text-5xl font-light text-[#F8F8F6] sm:text-8xl">Request your case.</h2>
+        <h2 className="mt-6 font-display text-5xl font-light text-[#F8F8F6] sm:text-8xl">Solicita tu caso.</h2>
         <a
           href={formatWhatsAppUrl(WA_LAB, WA_MSG_LAB)}
           target="_blank"

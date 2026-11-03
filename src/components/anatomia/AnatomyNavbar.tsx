@@ -32,7 +32,7 @@ export default function AnatomyNavbar() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 border border-[#C9A45C]/60 px-4 py-2 font-body text-[10px] font-medium uppercase tracking-[0.25em] text-[#E8D3A0] transition-colors hover:bg-[#C9A45C] hover:text-[#050505]"
         >
-          <MessageCircle className="h-3.5 w-3.5" strokeWidth={1.5} /> <span className="hidden sm:inline">Request your case</span><span className="sm:hidden">WhatsApp</span>
+          <MessageCircle className="h-3.5 w-3.5" strokeWidth={1.5} /> <span className="hidden sm:inline">Solicita tu caso</span><span className="sm:hidden">WhatsApp</span>
         </a>
       </div>
     </header>
