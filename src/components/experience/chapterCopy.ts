@@ -1,8 +1,8 @@
 /** Textos de los 5 capítulos (mismo orden que CHAPTERS). */
 export const CHAPTER_COPY = [
-  { title: 'Beyond the Smile.', subtitle: 'Precision begins with understanding.' },
-  { title: 'Understanding the Structure.', subtitle: 'Every detail has a purpose.' },
-  { title: 'Digital Precision.', subtitle: 'Where technology meets dental expertise.' },
-  { title: 'Artistry in Every Layer.', subtitle: 'Crafted with precision. Designed for natural aesthetics.' },
-  { title: 'Beyond the Smile.', subtitle: 'Precision. Science. Art.' },
+  { title: 'Más allá de la sonrisa.', subtitle: 'La precisión comienza con el entendimiento.' },
+  { title: 'Entender la estructura.', subtitle: 'Cada detalle tiene un propósito.' },
+  { title: 'Precisión digital.', subtitle: 'Donde la tecnología se une a la experiencia dental.' },
+  { title: 'Arte en cada capa.', subtitle: 'Hecha con precisión. Diseñada para una estética natural.' },
+  { title: 'Más allá de la sonrisa.', subtitle: 'Precisión. Ciencia. Arte.' },
 ] as const

@@ -8,6 +8,7 @@ import type { AnatomyKey, ToothGeometries } from '@/types/dental'
 import { ANATOMY_LABELS, PALETTE } from '@/lib/sceneConfig'
 import { hover, xp } from './experienceState'
 import { focusWeight, lerp, smooth } from './math'
+import { getPerikymataTexture } from './placeholderGeometry'
 
 /** Desplazamiento de cada grupo en la vista explosionada (unidades del modelo). */
 const EXPLODE = {
@@ -37,11 +38,13 @@ const LABEL_GROUP: Record<AnatomyKey, 'enamel' | 'core' | 'inner' | 'cementum'> 
 type MeshKey = 'enamel' | 'dentin' | 'pulp' | 'canals' | 'cementum'
 
 function makeMaterials() {
+  // Esmalte: color y translucidez por vértice (cervical cálido → incisal gris azulado → halo incisal)
   const enamel = new THREE.MeshPhysicalMaterial({
-    color: '#F2EEE4', roughness: 0.16, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.08,
-    sheen: 0.4, sheenColor: new THREE.Color('#ffffff'), ior: 1.62, transparent: true, opacity: 0.94,
+    vertexColors: true, roughness: 0.14, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06,
+    sheen: 0.35, sheenColor: new THREE.Color('#ffffff'), ior: 1.63, specularIntensity: 0.9,
+    transparent: true, depthWrite: false, bumpMap: getPerikymataTexture() ?? undefined, bumpScale: 1.1,
   })
-  const dentin = new THREE.MeshPhysicalMaterial({ color: '#E3CC9C', roughness: 0.55, clearcoat: 0.2, transparent: true })
+  const dentin = new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.6, sheen: 0.3, sheenColor: new THREE.Color('#f3e2c0'), transparent: true })
   const cementum = new THREE.MeshPhysicalMaterial({ color: '#D2BC8E', roughness: 0.78, transparent: true })
   const pulp = new THREE.MeshPhysicalMaterial({ color: '#9A3A36', roughness: 0.6, sheen: 0.6, sheenColor: new THREE.Color('#d98a80'), transparent: true })
   const canals = new THREE.MeshPhysicalMaterial({ color: '#7C2C2A', roughness: 0.62, transparent: true })
@@ -90,10 +93,10 @@ export default function AnatomyLayers({ geos }: { geos: ToothGeometries }) {
       const dim = lerp(1, 0.4, labelsOn * (1 - weight[k]))
       m.opacity = opacity * dim
       m.emissiveIntensity = 0.32 * labelsOn * weight[k]
-      m.depthWrite = m.opacity > 0.9
+      m.depthWrite = k !== 'enamel' && m.opacity > 0.9
       m.visible = m.opacity > 0.01
     }
-    set('enamel', base * lerp(0.94, 0.8, e))
+    set('enamel', base * lerp(1, 0.85, e))
     set('dentin', base)
     set('cementum', base)
     set('pulp', base)

@@ -3,38 +3,43 @@
 import { useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
-import { PALETTE, VENEER_STEPS } from '@/lib/sceneConfig'
-import { createPlaceholderVeneer } from './placeholderGeometry'
+import { PALETTE } from '@/lib/sceneConfig'
+import { createPlaceholderVeneer, getPerikymataTexture } from './placeholderGeometry'
 import { xp } from './experienceState'
 import { clamp01, lerp, smooth } from './math'
 
 /** Pose de exhibición de la carilla (coordenadas locales del diente) antes de integrarse. */
-const SHOW = { pos: new THREE.Vector3(2.3, -0.9, 0.6), rotY: -0.5, scale: 1.15 }
+const SHOW = { pos: new THREE.Vector3(2.3, -0.9, 0.6), rotY: -0.4, scale: 1.1 }
 
 /**
- * Carilla en 5 capas (escena 04) que viaja e se integra en el diente (escena 05).
- * Usa geometría provisional hasta tener veneer-layers.glb.
+ * Carilla estratificada (escena 04) que viaja y se integra en el diente (escena 05).
+ * Pasos (xp.build de 0 a 6):
+ *  1 diseño · 2 dentina cerámica · 3 cut-back y mamelones · 4 efectos incisales y halo
+ *  5 esmalte cerámico · 6 glaseado y pulido
  */
 export default function VeneerModel({ tier }: { tier: 'high' | 'low' }) {
-  const layers = useMemo(() => {
-    const scales = [1.03, 1.035, 1.042, 1.048, 1.055]
-    const mats: THREE.Material[] = [
-      new THREE.MeshBasicMaterial({ color: PALETTE.gold, wireframe: true, transparent: true, depthWrite: false }),
-      new THREE.MeshPhysicalMaterial({ color: '#EDE3CF', roughness: 0.42, clearcoat: 0.3, transparent: true, side: THREE.DoubleSide }),
-      new THREE.MeshPhysicalMaterial({ color: '#E6ECF0', roughness: 0.25, clearcoat: 0.6, transparent: true, side: THREE.DoubleSide, depthWrite: false }),
-      new THREE.MeshPhysicalMaterial({ color: '#E0C48E', roughness: 0.4, transparent: true, side: THREE.DoubleSide, depthWrite: false }),
-      new THREE.MeshPhysicalMaterial({
-        color: '#FFFFFF', roughness: 0.04, clearcoat: 1, clearcoatRoughness: 0.03, ior: 1.55,
-        transparent: true, side: THREE.DoubleSide, depthWrite: false,
+  const geos = useMemo(() => createPlaceholderVeneer(tier), [tier])
+  const mats = useMemo(() => {
+    const bump = getPerikymataTexture()
+    return {
+      design: new THREE.MeshBasicMaterial({ color: PALETTE.gold, wireframe: true, transparent: true, depthWrite: false }),
+      dentin: new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.55, sheen: 0.3, transparent: true, side: THREE.DoubleSide }),
+      effects: new THREE.MeshPhysicalMaterial({
+        vertexColors: true, roughness: 0.3, transparent: true, depthWrite: false, side: THREE.DoubleSide,
       }),
-    ]
-    const maxOpacity = [0.55, 0.96, 0.45, 0.22, 0.2]
-    return VENEER_STEPS.map((s, i) => ({ key: s.key, geo: createPlaceholderVeneer(scales[i], tier), mat: mats[i], max: maxOpacity[i] }))
-  }, [tier])
+      enamel: new THREE.MeshPhysicalMaterial({
+        vertexColors: true, roughness: 0.22, clearcoat: 0.4, ior: 1.6, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+      }),
+      glaze: new THREE.MeshPhysicalMaterial({
+        color: '#ffffff', roughness: 0.06, clearcoat: 1, clearcoatRoughness: 0.04, ior: 1.55,
+        transparent: true, depthWrite: false, bumpMap: bump ?? undefined, bumpScale: 1.2,
+      }),
+    }
+  }, [])
 
   const group = useRef<THREE.Group>(null)
+  const refs = useRef<Record<string, THREE.Mesh | null>>({})
   const wide = useThree((s) => s.size.width >= 768)
-  const meshes = useRef<(THREE.Mesh | null)[]>([])
 
   useFrame(() => {
     const g = group.current
@@ -46,30 +51,44 @@ export default function VeneerModel({ tier }: { tier: 'high' | 'low' }) {
     g.position.set(lerp(wide ? SHOW.pos.x : 1.55, 0, a), lerp(SHOW.pos.y, 0, a), lerp(SHOW.pos.z, 0, a))
     g.rotation.y = lerp(SHOW.rotY, 0, a)
     g.scale.setScalar(lerp(wide ? SHOW.scale : 0.95, 1, a))
-    layers.forEach((l, i) => {
-      const m = meshes.current[i]
+
+    const b = xp.build
+    const step = (i: number) => clamp01(b - i) // 0 → 1 mientras se construye el paso i+1
+    const ex = smooth(xp.vExplode)
+    const set = (k: keyof typeof mats, opacity: number, z: number) => {
+      const m = refs.current[k]
       if (!m) return
-      const built = clamp01(xp.build - i)
-      // La estructura de diseño (wireframe) desaparece al integrarse.
-      const keep = i === 0 ? 1 - a : 1
-      const op = l.max * built * vis * keep
-      ;(m.material as THREE.Material).opacity = op
-      m.visible = op > 0.01
-      m.position.z = i * 0.3 * smooth(xp.vExplode)
-      m.position.x = i * 0.12 * smooth(xp.vExplode)
-    })
+      mats[k].opacity = opacity
+      m.visible = opacity > 0.01
+      m.position.set(z * 0.35, 0, z)
+    }
+    // 1. Diseño: guía en malla dorada; se desvanece cuando la cerámica la cubre
+    set('design', 0.5 * step(0) * (1 - 0.75 * step(1)) * (1 - a) * vis, 0)
+    // 2. Dentina cerámica (3. el cut-back se hace con un morph sobre esta capa)
+    set('dentin', step(1) * vis, 0)
+    const dm = refs.current.dentin
+    if (dm?.morphTargetInfluences) dm.morphTargetInfluences[0] = smooth(step(2))
+    // 4. Efectos incisales y halo
+    set('effects', step(3) * vis, 0.28 * ex)
+    // 5. Esmalte cerámico
+    set('enamel', step(4) * vis, 0.56 * ex)
+    // 6. Glaseado y pulido
+    set('glaze', 0.22 * step(5) * vis, 0.84 * ex)
   })
+
+  const keys = ['design', 'dentin', 'effects', 'enamel', 'glaze'] as const
 
   return (
     <group ref={group} visible={false}>
-      {layers.map((l, i) => (
+      {keys.map((k, i) => (
         <mesh
-          key={l.key}
+          key={k}
           ref={(m) => {
-            meshes.current[i] = m
+            refs.current[k] = m
+            m?.updateMorphTargets()
           }}
-          geometry={l.geo}
-          material={l.mat}
+          geometry={geos[k]}
+          material={mats[k]}
           renderOrder={20 + i}
         />
       ))}

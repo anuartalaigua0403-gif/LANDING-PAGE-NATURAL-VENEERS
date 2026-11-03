@@ -46,7 +46,7 @@ export function createMasterTimeline(opts: {
       onUpdate: (self) => {
         xp.progress = self.progress
         onProgress(self.progress)
-        const active = Math.min(4, Math.floor(xp.build))
+        const active = Math.min(5, Math.floor(xp.build))
         steps.forEach((el, i) => el.toggleAttribute('data-active', xp.build > 0.15 && i <= active))
       },
       onLeave: () => onProgress(1),
@@ -75,14 +75,14 @@ export function createMasterTimeline(opts: {
   // ── 04 CRAFTSMANSHIP (0.55 – 0.80)
   tl.to(xp, { tooth: 0.45, shiftX: 0.5, rotY: TAU + 0.3, camZ: 10.8, duration: 0.05 }, 0.55)
   tl.to(xp, { veneer: 1, duration: 0.03 }, 0.56)
-  tl.to(xp, { build: 5, duration: 0.13, ease: 'none' }, 0.58)
-  tl.to(xp, { vExplode: 1, duration: 0.04 }, 0.71)
-  tl.to(xp, { vExplode: 0, duration: 0.04 }, 0.76)
+  tl.to(xp, { build: 6, duration: 0.14, ease: 'none' }, 0.575)
+  tl.to(xp, { vExplode: 1, duration: 0.035 }, 0.718)
+  tl.to(xp, { vExplode: 0, duration: 0.035 }, 0.762)
 
   // ── 05 THE PERFECTION (0.80 – 1)
   tl.to(xp, { attach: 1, duration: 0.08 }, 0.81)
   tl.to(xp, { tooth: 1, shiftX: 1.6, duration: 0.07 }, 0.82)
-  tl.to(xp, { rotY: TAU * 2 - 0.3, camZ: 9, duration: 0.11 }, 0.89)
+  tl.to(xp, { rotY: TAU * 2 - 0.3, camZ: 9.8, duration: 0.11 }, 0.89)
   tl.to(xp, { warm: 1, duration: 0.12 }, 0.86)
   tl.set({}, {}, 1) // la timeline dura exactamente 1
 

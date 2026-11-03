@@ -7,7 +7,7 @@ import { CHAPTER_COPY } from './chapterCopy'
  */
 export default function ExperienceFallback({ reason }: { reason: 'no-webgl' | 'reduced-motion' }) {
   return (
-    <section className="relative bg-[#050505] px-6 pt-32 pb-20" aria-label="The Anatomy Experience">
+    <section className="relative bg-[#050505] px-6 pt-32 pb-20" aria-label="Experiencia anatómica">
       <div className="mx-auto max-w-3xl space-y-24">
         {CHAPTERS.map((c, i) => {
           const copy = CHAPTER_COPY[i]

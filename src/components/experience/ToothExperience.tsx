@@ -57,7 +57,7 @@ export default function ToothExperience() {
   }
 
   return (
-    <section ref={section} id="experiencia" className="relative h-[100svh] w-full overflow-hidden bg-[#050505]" aria-label="The Anatomy Experience">
+    <section ref={section} id="experiencia" className="relative h-[100svh] w-full overflow-hidden bg-[#050505]" aria-label="Experiencia anatómica">
       {/* Escena 3D */}
       <div className="absolute inset-0">{device && <ToothCanvas tier={device.tier} gateRef={section} />}</div>
 
@@ -69,9 +69,9 @@ export default function ToothExperience() {
       <div className="pointer-events-none absolute inset-0 mx-auto max-w-7xl px-6 sm:px-10">
         {/* 01 */}
         <div ref={(el) => { chapters.current[0] = el }} className="absolute inset-x-6 bottom-[12%] sm:inset-x-10 md:bottom-auto md:top-1/2 md:max-w-xl md:-translate-y-1/2">
-          <p className={eyebrow}>Natural Veneers · The Anatomy Experience</p>
+          <p className={eyebrow}>Natural Veneers · Experiencia anatómica</p>
           <h1 className={`${title} mt-5 text-5xl sm:text-7xl lg:text-8xl`}>
-            Beyond<br />the Smile.
+            Más allá de<br />la sonrisa.
           </h1>
           <p className="mt-6 max-w-sm font-body text-sm text-[#A1A1AA] sm:text-base">{CHAPTER_COPY[0].subtitle}</p>
           <p className="mt-10 hidden items-center gap-3 font-body text-[10px] uppercase tracking-[0.35em] text-[#A1A1AA]/70 md:flex">
@@ -81,8 +81,8 @@ export default function ToothExperience() {
 
         {/* 02 */}
         <div ref={(el) => { chapters.current[1] = el }} className="invisible absolute inset-x-6 bottom-[10%] opacity-0 sm:inset-x-10 md:bottom-auto md:top-[16%] md:max-w-sm">
-          <p className={eyebrow}>02 — The Anatomy</p>
-          <h2 className={`${title} mt-4 text-4xl sm:text-5xl`}>Understanding<br />the Structure.</h2>
+          <p className={eyebrow}>02 — La anatomía</p>
+          <h2 className={`${title} mt-4 text-4xl sm:text-5xl`}>Entender la<br />estructura.</h2>
           <p className="mt-4 font-body text-sm text-[#A1A1AA]">{CHAPTER_COPY[1].subtitle}</p>
           <p className="mt-6 hidden font-body text-[11px] leading-relaxed text-[#A1A1AA]/70 md:block">
             Pasa el cursor sobre cada estructura para resaltarla.
@@ -91,8 +91,8 @@ export default function ToothExperience() {
 
         {/* 03 */}
         <div ref={(el) => { chapters.current[2] = el }} className="invisible absolute inset-x-6 bottom-[10%] opacity-0 sm:inset-x-10 md:bottom-auto md:top-1/2 md:max-w-md md:-translate-y-1/2">
-          <p className={eyebrow}>03 — Digital Engineering</p>
-          <h2 className={`${title} mt-4 text-4xl sm:text-6xl`}>Digital<br />Precision.</h2>
+          <p className={eyebrow}>03 — Ingeniería digital</p>
+          <h2 className={`${title} mt-4 text-4xl sm:text-6xl`}>Precisión<br />digital.</h2>
           <p className="mt-4 font-body text-sm text-[#A1A1AA]">{CHAPTER_COPY[2].subtitle}</p>
           <p className="mt-6 hidden max-w-xs font-body text-[11px] leading-relaxed text-[#A1A1AA]/60 md:block">
             Representación ilustrativa del diseño digital.
@@ -101,8 +101,8 @@ export default function ToothExperience() {
 
         {/* 04 */}
         <div ref={(el) => { chapters.current[3] = el }} className="invisible absolute inset-x-6 bottom-[8%] opacity-0 sm:inset-x-10 md:bottom-auto md:top-1/2 md:max-w-sm md:-translate-y-1/2">
-          <p className={eyebrow}>04 — Craftsmanship</p>
-          <h2 className={`${title} mt-4 text-4xl sm:text-5xl`}>Artistry in<br />Every Layer.</h2>
+          <p className={eyebrow}>04 — Artesanía</p>
+          <h2 className={`${title} mt-4 text-4xl sm:text-5xl`}>Arte en<br />cada capa.</h2>
           <p className="mt-4 font-body text-sm text-[#A1A1AA]">{CHAPTER_COPY[3].subtitle}</p>
           <ol className="mt-6 hidden space-y-2.5 md:block">
             {VENEER_STEPS.map((s, i) => (
@@ -120,16 +120,16 @@ export default function ToothExperience() {
 
         {/* 05 */}
         <div ref={(el) => { chapters.current[4] = el }} className="invisible absolute inset-x-6 bottom-[8%] opacity-0 sm:inset-x-10 md:bottom-auto md:top-1/2 md:max-w-lg md:-translate-y-1/2">
-          <p className={eyebrow}>05 — The Perfection</p>
-          <h2 className={`${title} mt-4 text-5xl sm:text-7xl`}>Beyond<br />the Smile.</h2>
-          <p className="mt-5 font-body text-[11px] font-medium uppercase tracking-[0.45em] text-[#E8D3A0]">Precision. Science. Art.</p>
+          <p className={eyebrow}>05 — La perfección</p>
+          <h2 className={`${title} mt-4 text-5xl sm:text-7xl`}>Más allá de<br />la sonrisa.</h2>
+          <p className="mt-5 font-body text-[11px] font-medium uppercase tracking-[0.45em] text-[#E8D3A0]">Precisión. Ciencia. Arte.</p>
           <p className="mt-2 font-display text-lg tracking-[0.3em] text-[#F8F8F6]/80">NATURAL VENEERS</p>
           <div className="pointer-events-auto mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#materiales"
               className="inline-flex items-center gap-2 border border-[#C9A45C] bg-[#C9A45C] px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.25em] text-[#050505] transition-colors hover:bg-transparent hover:text-[#E8D3A0]"
             >
-              Discover our solutions
+              Descubre nuestras soluciones
             </a>
             <button
               type="button"
