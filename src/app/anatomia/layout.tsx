@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 
 // Prototipo privado: no indexar hasta su aprobación.
 export const metadata: Metadata = {
-  title: 'The Anatomy Experience — Natural Veneers',
-  description: 'Beyond the smile. Precision. Science. Art.',
+  title: 'Experiencia anatómica — Natural Veneers',
+  description: 'Más allá de la sonrisa. Precisión. Ciencia. Arte.',
   robots: { index: false, follow: false },
 }
 
