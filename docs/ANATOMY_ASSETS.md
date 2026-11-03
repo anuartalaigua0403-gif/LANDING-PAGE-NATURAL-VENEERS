@@ -3,8 +3,9 @@
 Prototipo en la rama `prototipo-anatomy`, ruta `/anatomia` (noindex). No forma parte de `desarrollo` ni de producción.
 
 ## Estado actual
-- La escena usa un **modelo provisional generado por código** (`src/components/experience/placeholderGeometry.ts`):
-  aproximación simplificada de un incisivo central superior, con capas separadas. **No es un modelo anatómico exacto.**
+- La escena usa un **modelo provisional paramétrico** (`src/components/experience/placeholderGeometry.ts`): incisivo central superior con
+  cara palatina en pala, cíngulo, línea amelocementaria festoneada, esmalte translúcido en incisal con halo, mamelones de dentina,
+  cuernos pulpares, periquimatías y carilla estratificada por cut-back. **Sigue siendo una aproximación, no un modelo anatómico exacto.**
 - Nervios y vasos son **ilustrativos**.
 - La escena 03 (CAD) es una **representación visual**, no la salida de un software clínico.
 
@@ -29,7 +30,7 @@ cara vestibular mirando a +Z, borde incisal arriba. Mallas separadas con estos n
 - Sin texturas pesadas (máx. 2048 px, preferiblemente KTX2/WebP).
 
 ### 2. `public/models/veneer/veneer-layers.glb`
-Carilla adaptada a la cara vestibular del mismo diente, con 5 mallas: `Structure`, `Body`, `Layering`, `Characterization`, `Glaze`.
+Carilla adaptada a la cara vestibular del mismo diente, con 5 mallas: `Design` (guía de diseño), `CeramicDentin` (dentina cerámica, con un morph target `CutBack` que recorta el tercio incisal dejando mamelones), `IncisalEffects` (opalescencia y halo incisal), `CeramicEnamel` (esmalte cerámico translúcido) y `Glaze` (glaseado).
 
 ## Cómo activarlos
 1. Copiar los archivos a las rutas de arriba.
