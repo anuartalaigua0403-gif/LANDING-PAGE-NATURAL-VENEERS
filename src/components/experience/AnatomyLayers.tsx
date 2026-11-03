@@ -9,6 +9,7 @@ import { ANATOMY_LABELS, PALETTE } from '@/lib/sceneConfig'
 import { hover, xp } from './experienceState'
 import { focusWeight, lerp, smooth } from './math'
 import { getPerikymataTexture } from './placeholderGeometry'
+import { getTubulesBump, getTubulesColor } from './textures'
 
 /** Desplazamiento de cada grupo en la vista explosionada (unidades del modelo). */
 const EXPLODE = {
@@ -37,15 +38,26 @@ const LABEL_GROUP: Record<AnatomyKey, 'enamel' | 'core' | 'inner' | 'cementum'> 
 
 type MeshKey = 'enamel' | 'dentin' | 'pulp' | 'canals' | 'cementum'
 
-function makeMaterials() {
+function makeMaterials(tier: 'high' | 'low') {
   // Esmalte: color y translucidez por vértice (cervical cálido → incisal gris azulado → halo incisal)
   const enamel = new THREE.MeshPhysicalMaterial({
     vertexColors: true, roughness: 0.14, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06,
     sheen: 0.35, sheenColor: new THREE.Color('#ffffff'), ior: 1.63, specularIntensity: 0.9,
     transparent: true, depthWrite: false, bumpMap: getPerikymataTexture() ?? undefined, bumpScale: 1.1,
   })
-  const dentin = new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.6, sheen: 0.3, sheenColor: new THREE.Color('#f3e2c0'), transparent: true })
-  const cementum = new THREE.MeshPhysicalMaterial({ color: '#D2BC8E', roughness: 0.78, transparent: true })
+  if (tier === 'high') {
+    // Translucidez real: la luz atraviesa el esmalte y deja ver la dentina (mamelones) con tono cálido
+    enamel.transmission = 0.5
+    enamel.thickness = 0.45
+    enamel.attenuationColor = new THREE.Color('#F0D6A6')
+    enamel.attenuationDistance = 1.1
+    enamel.transparent = false
+  }
+  const dentin = new THREE.MeshPhysicalMaterial({
+    vertexColors: true, roughness: 0.62, sheen: 0.3, sheenColor: new THREE.Color('#f3e2c0'), transparent: true,
+    map: getTubulesColor() ?? undefined, bumpMap: getTubulesBump() ?? undefined, bumpScale: 0.9,
+  })
+  const cementum = new THREE.MeshPhysicalMaterial({ color: '#D3C5A6', roughness: 0.78, sheen: 0.2, transparent: true })
   const pulp = new THREE.MeshPhysicalMaterial({ color: '#9A3A36', roughness: 0.6, sheen: 0.6, sheenColor: new THREE.Color('#d98a80'), transparent: true })
   const canals = new THREE.MeshPhysicalMaterial({ color: '#7C2C2A', roughness: 0.62, transparent: true })
   const nerve = new THREE.MeshStandardMaterial({ color: PALETTE.goldLight, roughness: 0.5, transparent: true })
@@ -55,8 +67,8 @@ function makeMaterials() {
   return { enamel, dentin, cementum, pulp, canals, nerve, artery, vein }
 }
 
-export default function AnatomyLayers({ geos }: { geos: ToothGeometries }) {
-  const mats = useMemo(makeMaterials, [])
+export default function AnatomyLayers({ geos, tier }: { geos: ToothGeometries; tier: 'high' | 'low' }) {
+  const mats = useMemo(() => makeMaterials(tier), [tier])
   const enamelG = useRef<THREE.Group>(null)
   const innerG = useRef<THREE.Group>(null)
   const cementumG = useRef<THREE.Group>(null)
@@ -93,7 +105,11 @@ export default function AnatomyLayers({ geos }: { geos: ToothGeometries }) {
       const dim = lerp(1, 0.4, labelsOn * (1 - weight[k]))
       m.opacity = opacity * dim
       m.emissiveIntensity = 0.32 * labelsOn * weight[k]
-      m.depthWrite = k !== 'enamel' && m.opacity > 0.9
+      // Opaco cuando está completo (así se ve a través del esmalte translúcido)
+      const solid = m.opacity > 0.995
+      if (k === 'enamel') m.transparent = tier === 'low' || !solid
+      else m.transparent = !solid
+      m.depthWrite = k !== 'enamel' && solid
       m.visible = m.opacity > 0.01
     }
     set('enamel', base * lerp(1, 0.85, e))

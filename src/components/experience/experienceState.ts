@@ -20,6 +20,8 @@ export const xp = {
   focus: -1,
   /** Visibilidad de las etiquetas anatómicas. */
   labels: 0,
+  /** 0 → 1: el esmalte se desintegra en partículas (paso a lo digital). */
+  dissolve: 0,
   /** 0 → 1: modo ingeniería digital (wireframe, escaneo, rejilla). */
   digital: 0,
   /** Opacidad general del diente natural (se atenúa en las escenas 03 y 04). */

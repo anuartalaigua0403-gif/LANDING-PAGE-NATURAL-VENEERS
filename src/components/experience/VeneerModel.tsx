@@ -7,6 +7,8 @@ import { PALETTE } from '@/lib/sceneConfig'
 import { createPlaceholderVeneer, getPerikymataTexture } from './placeholderGeometry'
 import { xp } from './experienceState'
 import { clamp01, lerp, smooth } from './math'
+import BacklightGlow from './BacklightGlow'
+import FresnelRim from './FresnelRim'
 
 /** Pose de exhibición de la carilla (coordenadas locales del diente) antes de integrarse. */
 const SHOW = { pos: new THREE.Vector3(2.3, -0.9, 0.6), rotY: -0.4, scale: 1.1 }
@@ -80,6 +82,14 @@ export default function VeneerModel({ tier }: { tier: 'high' | 'low' }) {
 
   return (
     <group ref={group} visible={false}>
+      {/* Contraluz cálido detrás de la carilla mientras se exhibe (como en fotografía de estudio) */}
+      <BacklightGlow position={[0, 0.75, -1.1]} size={3.2} getIntensity={() => 0.38 * xp.veneer * (1 - smooth(xp.attach))} />
+      <FresnelRim
+        geometry={geos.glaze}
+        color={PALETTE.goldLight}
+        scale={1.002}
+        getIntensity={() => 0.55 * clamp01(xp.build - 4) * xp.veneer}
+      />
       {keys.map((k, i) => (
         <mesh
           key={k}

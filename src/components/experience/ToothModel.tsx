@@ -10,6 +10,10 @@ import { createPlaceholderTooth } from './placeholderGeometry'
 import AnatomyLayers from './AnatomyLayers'
 import DigitalOverlay from './DigitalOverlay'
 import VeneerModel from './VeneerModel'
+import FresnelRim from './FresnelRim'
+import BacklightGlow from './BacklightGlow'
+import DissolveParticles from './DissolveParticles'
+import { PALETTE } from '@/lib/sceneConfig'
 import { xp } from './experienceState'
 import { lerp, smooth } from './math'
 
@@ -71,8 +75,26 @@ function ToothRig({ geos, tier }: { geos: ToothGeometries; tier: 'high' | 'low' 
 
   return (
     <group ref={root}>
+      {/* Contraluz cálido detrás del diente */}
+      <BacklightGlow
+        position={[0, 0.35, -2]}
+        size={6.2}
+        getIntensity={() => xp.appear * (0.12 + 0.2 * xp.warm) * (1 - 0.6 * xp.digital) * (1 - 0.5 * smooth(xp.explode))}
+      />
       <group ref={spin} position={[0, 0.68, 0]}>
-        <AnatomyLayers geos={geos} />
+        <AnatomyLayers geos={geos} tier={tier} />
+        <FresnelRim
+          geometry={geos.enamel}
+          color={PALETTE.goldLight}
+          getIntensity={() => xp.appear * xp.tooth * (0.35 + 0.35 * xp.warm) * (1 - smooth(xp.explode))}
+        />
+        <FresnelRim
+          geometry={geos.cementum}
+          color={PALETTE.gold}
+          power={3}
+          getIntensity={() => xp.appear * xp.tooth * 0.12 * (1 - smooth(xp.explode))}
+        />
+        <DissolveParticles geometry={geos.enamel} count={tier === 'high' ? 7000 : 2200} />
         <DigitalOverlay geos={geos} tier={tier} />
         <VeneerModel tier={tier} />
       </group>

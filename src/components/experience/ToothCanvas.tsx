@@ -7,6 +7,8 @@ import type { DeviceTier } from '@/types/dental'
 import ToothModel from './ToothModel'
 import SceneLighting from './SceneLighting'
 import GoldParticles from './GoldParticles'
+import BokehBackground from './BokehBackground'
+import Effects from './Effects'
 import { xp } from './experienceState'
 
 /** Cámara: distancia controlada por el scroll; más lejos en pantallas verticales. */
@@ -45,10 +47,12 @@ export default function ToothCanvas({ tier, gateRef }: { tier: DeviceTier; gateR
       <RenderGate target={gateRef} />
       <ToothCamera />
       <SceneLighting />
+      <BokehBackground count={tier === 'high' ? 14 : 7} />
       <GoldParticles count={tier === 'high' ? 700 : 220} />
       <Suspense fallback={null}>
         <ToothModel tier={tier} />
       </Suspense>
+      {tier === 'high' && <Effects />}
     </Canvas>
   )
 }
