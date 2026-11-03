@@ -23,16 +23,16 @@ export const ui = {
   },
   marquee: {
     items: {
-      es: ['Carillas Estratificadas','Carillas Maquilladas','Feldespato Puro','Carillas Híbridas','Precisión Microscópica','Estética Máxima','Laboratorio Premium','Colombia'],
-      en: ['Layered Veneers','Stained Veneers','Pure Feldspar','Hybrid Veneers','Microscopic Precision','Maximum Aesthetics','Premium Laboratory','Colombia'],
+      es: ['Carillas Estratificadas','Carillas Maquilladas','Feldespato Puro','Precisión Microscópica','Estética Máxima','Laboratorio Premium','Colombia'],
+      en: ['Layered Veneers','Stained Veneers','Pure Feldspar','Microscopic Precision','Maximum Aesthetics','Premium Laboratory','Colombia'],
     },
   },
   products: {
     sectionLabel: { es: 'Nuestros Productos', en: 'Our Products' },
     title: { es: 'Maestría en Porcelana', en: 'Mastery in Porcelain' },
     subtitle: {
-      es: 'Cuatro líneas de carillas diseñadas para cada caso clínico.',
-      en: 'Four veneer lines designed for every clinical case.',
+      es: 'Tres líneas de carillas diseñadas para cada caso clínico.',
+      en: 'Three veneer lines designed for every clinical case.',
     },
   },
   process: {
@@ -158,15 +158,6 @@ export const PRODUCTS: Product[] = [
     descEs: 'La porcelana más cercana al diente natural. Ultra-finas, hasta 0.3mm de grosor.',
     descEn: 'The porcelain closest to the natural tooth. Ultra-thin, down to 0.3mm thickness.',
     tag: 'Ultra-Fino',
-  },
-  {
-    id: 'hibridas',
-    image: '/img/hibridas.jpg',
-    titleEs: 'Carillas Híbridas',
-    titleEn: 'Hybrid Veneers',
-    descEs: 'La fusión entre resistencia y estética. Solución versátil para el clínico moderno.',
-    descEn: 'The fusion of strength and aesthetics. Versatile solution for the modern clinician.',
-    tag: 'Versátil',
   },
 ]
 
