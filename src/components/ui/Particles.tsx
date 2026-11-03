@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 
 interface Particle {
   x: number
@@ -14,6 +15,8 @@ interface Particle {
 
 export default function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const pathname = usePathname()
+  const hidden = pathname?.startsWith('/anatomia') ?? false
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -83,7 +86,10 @@ export default function Particles() {
       window.removeEventListener('resize', resize)
       cancelAnimationFrame(raf)
     }
-  }, [])
+  }, [hidden])
+
+  // /anatomia (prototipo) tiene sus propias partículas en 3D
+  if (hidden) return null
 
   return (
     <canvas
