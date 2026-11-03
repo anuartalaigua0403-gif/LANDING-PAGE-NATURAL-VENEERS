@@ -21,6 +21,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // /anatomia (prototipo) trae su propia navegación
+  if (pathname?.startsWith('/anatomia')) return null
+
   const navLinks = [
     { href: '/#products', label: T(ui.nav.products) },
     { href: '/#process', label: T(ui.nav.process) },
