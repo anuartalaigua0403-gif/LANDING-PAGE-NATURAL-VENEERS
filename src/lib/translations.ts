@@ -88,6 +88,11 @@ export const ui = {
       en: 'We work exclusively with clinicians who share our philosophy: zero compromises in quality, maximum attention to detail, and results that transform lives.',
     },
     teamLabel: { es: 'Nuestro Equipo', en: 'Our Team' },
+    teamCaption: { es: 'Equipo técnico', en: 'Technical team' },
+    teamAlt: { es: 'Técnico dental del equipo de Natural Veneers en el laboratorio', en: 'Natural Veneers dental technician in the laboratory' },
+    teamGoTo: { es: 'Ver foto', en: 'Show photo' },
+    teamPause: { es: 'Pausar carrusel', en: 'Pause carousel' },
+    teamPlay: { es: 'Reanudar carrusel', en: 'Play carousel' },
   },
   faq: {
     sectionLabel: { es: 'Preguntas Frecuentes', en: 'FAQ' },
