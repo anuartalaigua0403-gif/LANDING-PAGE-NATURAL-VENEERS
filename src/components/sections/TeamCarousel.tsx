@@ -13,6 +13,7 @@ const TEAM = [
   { src: '/img/equipo-2.jpg', position: '58% 30%' },
   { src: '/img/equipo-3.jpg', position: '56% 35%' },
   { src: '/img/equipo-4.jpg', position: '70% 30%' },
+  { src: '/img/equipo-5.jpg', position: '66% 30%' },
 ] as const
 
 const INTERVAL = 5000
