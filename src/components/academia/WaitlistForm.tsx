@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
+import { LEGAL_LINKS } from '@/lib/legal'
 import { formatWhatsAppUrl } from '@/lib/utils'
 import { WA_FORMACION } from '@/lib/whatsapp'
 import { LEADS_ENDPOINT, LAUNCH_LABEL, PROFILES, LEVELS, INTERESTS, COUNTRY_CODES } from '@/lib/academia'
@@ -225,7 +227,11 @@ export default function WaitlistForm() {
           <label className="flex items-start gap-3 cursor-pointer select-none">
             <input id="nv-autoriza" type="checkbox" checked={d.autoriza} onChange={(e) => set('autoriza', e.target.checked)} className="nv-check-in mt-0.5" />
             <span className="font-body text-xs text-mist/70 leading-relaxed">
-              Autorizo a Natural Veneers S.A.S. a tratar mis datos personales para enviarme información sobre la Academia, conforme a la Ley 1581 de 2012. Puedo solicitar su eliminación en cualquier momento.
+              Autorizo a Natural Veneers S.A.S. a tratar mis datos personales para enviarme información sobre la Academia, conforme a la Ley 1581 de 2012 y a la{' '}
+              <Link href={LEGAL_LINKS.privacy} target="_blank" className="text-gold underline underline-offset-2">
+                Política de Tratamiento de Datos
+              </Link>
+              . Puedo solicitar su eliminación en cualquier momento.
             </span>
           </label>
           {err('autoriza')}
