@@ -109,7 +109,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     title: 'Guía de microestratificación cerámica',
     desc: 'Guía digital sobre la técnica de microestratificación en cerámica dental. [POR CONFIRMAR — descripción final]',
     image: '/img/estratificacion.jpg',
-    price: '[POR CONFIRMAR]',
+    price: '$55,467',
     checkoutUrl: 'https://pay.hotmart.com/C108135779I',
     salesUrl: 'https://go.hotmart.com/C108135779I',
   },
