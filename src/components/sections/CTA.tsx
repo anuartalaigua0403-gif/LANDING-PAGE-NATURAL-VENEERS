@@ -5,7 +5,9 @@ import { motion, useInView } from 'framer-motion'
 import { useT, useLanguage } from '@/hooks/useLanguage'
 import { ui } from '@/lib/translations'
 import { formatWhatsAppUrl } from '@/lib/utils'
+import Link from 'next/link'
 import type { ContactFormData, ContactApiResponse } from '@/types'
+import { LEGAL_LINKS } from '@/lib/legal'
 
 export default function CTA() {
   const T = useT()
@@ -24,7 +26,7 @@ export default function CTA() {
   }
 
   const [form, setForm] = useState<Omit<ContactFormData, 'lang'>>({
-    name: '', email: '', phone: '', message: '',
+    name: '', email: '', phone: '', message: '', consent: false,
   })
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
@@ -117,6 +119,22 @@ export default function CTA() {
                 <input type="email" required placeholder={formT.email} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} />
                 <input type="tel" placeholder={formT.phone} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className={inputClass} />
                 <textarea required rows={4} placeholder={formT.message} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className={`${inputClass} resize-none`} />
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={form.consent}
+                    onChange={(e) => setForm({ ...form, consent: e.target.checked })}
+                    className="mt-1 h-4 w-4 shrink-0 accent-[#C9A227]"
+                  />
+                  <span className="font-body text-xs text-mist/80 leading-relaxed">
+                    {T(ui.cta.form.consent)}{' '}
+                    <Link href={LEGAL_LINKS.privacy} target="_blank" className="text-gold underline underline-offset-2">
+                      {T(ui.cta.form.consentLink)}
+                    </Link>
+                    .
+                  </span>
+                </label>
                 {status === 'error' && <p className="font-body text-xs text-red-400">{formT.error}</p>}
                 <button type="submit" disabled={status === 'sending'} className="w-full py-4 bg-gold text-void font-body text-xs tracking-widest uppercase font-semibold hover:bg-gold-bright disabled:opacity-60 transition-colors duration-300">
                   {status === 'sending' ? formT.sending : formT.submit}
