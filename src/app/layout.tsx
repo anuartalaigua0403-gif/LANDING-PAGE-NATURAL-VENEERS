@@ -8,6 +8,7 @@ import Particles from '@/components/ui/Particles'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat'
+import CookieBanner from '@/components/ui/CookieBanner'
 
 export const metadata: Metadata = {
   title: 'Natural Veneers — Laboratorio Dental Premium | Colombia',
@@ -43,6 +44,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
             <WhatsAppFloat />
+            <CookieBanner />
           </LanguageProvider>
         </PreloaderProvider>
       </body>
