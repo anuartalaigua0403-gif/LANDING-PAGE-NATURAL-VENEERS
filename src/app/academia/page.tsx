@@ -93,11 +93,6 @@ export default function AcademiaPage() {
         </div>
 
         <div className="relative max-w-6xl mx-auto text-center">
-          <Reveal>
-            <span className="inline-block mb-8 px-3 py-1 border border-gold/40 font-body text-[10px] tracking-[0.3em] uppercase text-gold-bright/80">
-              Prototipo · No publicado
-            </span>
-          </Reveal>
           <Reveal delay={0.05}>
             <Label>Academia Natural Veneers</Label>
           </Reveal>
