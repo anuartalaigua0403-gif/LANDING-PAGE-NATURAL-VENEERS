@@ -44,6 +44,8 @@ export interface ContactFormData {
   phone?: string
   message: string
   lang: Lang
+  /** Autorización de tratamiento de datos (Ley 1581 de 2012). Obligatoria. */
+  consent: boolean
 }
 
 export interface ContactApiResponse {

@@ -6,6 +6,8 @@ import { useT } from '@/hooks/useLanguage'
 import { ui } from '@/lib/translations'
 import { formatWhatsAppUrl } from '@/lib/utils'
 import { WA_LAB, WA_FORMACION, WA_MSG_LAB, WA_MSG_FORMACION } from '@/lib/whatsapp'
+import { COMPANY, LEGAL_LINKS } from '@/lib/legal'
+import { openCookiePreferences } from '@/lib/consent'
 
 export default function Footer() {
   const T = useT()
@@ -77,7 +79,15 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gold/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body text-xs text-mist/30">© {year} Natural Veneers. {T(ui.footer.rights)}</p>
+          <div className="text-center md:text-left">
+            <p className="font-body text-xs text-mist/50">© {year} {COMPANY.legalName} · NIT {COMPANY.nit} · {COMPANY.city}, {COMPANY.country}. {T(ui.footer.rights)}</p>
+            <nav aria-label="Legal" className="mt-3 flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-2">
+              <Link href={LEGAL_LINKS.privacy} className="font-body text-xs text-mist/60 hover:text-gold transition-colors">{T(ui.footer.privacy)}</Link>
+              <Link href={LEGAL_LINKS.cookies} className="font-body text-xs text-mist/60 hover:text-gold transition-colors">{T(ui.footer.cookies)}</Link>
+              <Link href={LEGAL_LINKS.terms} className="font-body text-xs text-mist/60 hover:text-gold transition-colors">{T(ui.footer.terms)}</Link>
+              <button type="button" onClick={openCookiePreferences} className="font-body text-xs text-mist/60 hover:text-gold transition-colors">{T(ui.footer.cookiePrefs)}</button>
+            </nav>
+          </div>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
         </div>
       </div>

@@ -1,10 +1,10 @@
 'use client'
 
-import Image from 'next/image'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useT } from '@/hooks/useLanguage'
 import { ui } from '@/lib/translations'
+import TeamCarousel from './TeamCarousel'
 
 export default function About() {
   const T = useT()
@@ -15,25 +15,14 @@ export default function About() {
     <section id="about" className="py-32 px-6 bg-void">
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
+          {/* Carrusel del equipo técnico */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <Image
-                src="/img/equipo.jpg"
-                alt="Natural Veneers Team"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover filter brightness-80"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent" />
-            </div>
-            {/* Gold accent frame */}
-            <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold/20 pointer-events-none" />
+            <TeamCarousel />
           </motion.div>
 
           {/* Text */}

@@ -23,16 +23,16 @@ export const ui = {
   },
   marquee: {
     items: {
-      es: ['Carillas Estratificadas','Carillas Maquilladas','Feldespato Puro','Carillas Híbridas','Precisión Microscópica','Estética Máxima','Laboratorio Premium','Colombia'],
-      en: ['Layered Veneers','Stained Veneers','Pure Feldspar','Hybrid Veneers','Microscopic Precision','Maximum Aesthetics','Premium Laboratory','Colombia'],
+      es: ['Carillas Estratificadas','Carillas Maquilladas','Feldespato Puro','Precisión Microscópica','Estética Máxima','Laboratorio Premium','Colombia'],
+      en: ['Layered Veneers','Stained Veneers','Pure Feldspar','Microscopic Precision','Maximum Aesthetics','Premium Laboratory','Colombia'],
     },
   },
   products: {
     sectionLabel: { es: 'Nuestros Productos', en: 'Our Products' },
     title: { es: 'Maestría en Porcelana', en: 'Mastery in Porcelain' },
     subtitle: {
-      es: 'Cuatro líneas de carillas diseñadas para cada caso clínico.',
-      en: 'Four veneer lines designed for every clinical case.',
+      es: 'Tres líneas de carillas diseñadas para cada caso clínico.',
+      en: 'Three veneer lines designed for every clinical case.',
     },
   },
   process: {
@@ -88,6 +88,11 @@ export const ui = {
       en: 'We work exclusively with clinicians who share our philosophy: zero compromises in quality, maximum attention to detail, and results that transform lives.',
     },
     teamLabel: { es: 'Nuestro Equipo', en: 'Our Team' },
+    teamCaption: { es: 'Equipo técnico', en: 'Technical team' },
+    teamAlt: { es: 'Técnico dental del equipo de Natural Veneers en el laboratorio', en: 'Natural Veneers dental technician in the laboratory' },
+    teamGoTo: { es: 'Ver foto', en: 'Show photo' },
+    teamPause: { es: 'Pausar carrusel', en: 'Pause carousel' },
+    teamPlay: { es: 'Reanudar carrusel', en: 'Play carousel' },
   },
   faq: {
     sectionLabel: { es: 'Preguntas Frecuentes', en: 'FAQ' },
@@ -104,6 +109,11 @@ export const ui = {
     },
     whatsapp: { es: 'Escribir por WhatsApp', en: 'Message on WhatsApp' },
     form: {
+      consent: {
+        es: 'Autorizo a NATURAL VENEERS S.A.S. a tratar mis datos personales para atender mi solicitud y contactarme, conforme a la',
+        en: 'I authorize NATURAL VENEERS S.A.S. to process my personal data to handle my request and contact me, in accordance with the',
+      },
+      consentLink: { es: 'Política de Tratamiento de Datos', en: 'Personal Data Policy (Spanish)' },
       name: { es: 'Nombre completo', en: 'Full name' },
       email: { es: 'Correo electrónico', en: 'Email address' },
       phone: { es: 'Teléfono (opcional)', en: 'Phone (optional)' },
@@ -123,6 +133,41 @@ export const ui = {
     igText: {
       es: 'Casos reales, procesos y el día a día de nuestro laboratorio. Te invitamos a conocernos.',
       en: 'Real cases, our process and everyday life in our lab. Come and get to know us.',
+    },
+    privacy: { es: 'Política de privacidad', en: 'Privacy policy' },
+    cookies: { es: 'Política de cookies', en: 'Cookie policy' },
+    terms: { es: 'Términos y condiciones', en: 'Terms and conditions' },
+    cookiePrefs: { es: 'Preferencias de cookies', en: 'Cookie preferences' },
+  },
+  sponsors: {
+    label: { es: 'Marcas con las que trabajamos', en: 'Brands we work with' },
+  },
+  cookies: {
+    title: { es: 'Tu privacidad', en: 'Your privacy' },
+    text: {
+      es: 'Usamos solo el almacenamiento técnico necesario para que el sitio funcione. Si en el futuro activamos herramientas de medición o publicidad, solo se cargarán con tu permiso.',
+      en: 'We only use the technical storage needed for the site to work. If we add analytics or advertising tools in the future, they will only load with your permission.',
+    },
+    policy: { es: 'Política de cookies', en: 'Cookie policy' },
+    privacy: { es: 'Privacidad', en: 'Privacy' },
+    acceptAll: { es: 'Aceptar todas', en: 'Accept all' },
+    rejectAll: { es: 'Solo necesarias', en: 'Necessary only' },
+    configure: { es: 'Configurar', en: 'Customize' },
+    save: { es: 'Guardar preferencias', en: 'Save preferences' },
+    necessary: { es: 'Necesarias (siempre activas)', en: 'Necessary (always on)' },
+    necessaryDesc: {
+      es: 'Permiten el funcionamiento básico y recuerdan tu decisión sobre cookies.',
+      en: 'Enable basic operation and remember your cookie choice.',
+    },
+    analytics: { es: 'Analíticas', en: 'Analytics' },
+    analyticsDesc: {
+      es: 'Medición anónima de visitas para mejorar el sitio. Hoy no están en uso.',
+      en: 'Anonymous visit measurement to improve the site. Not in use today.',
+    },
+    marketing: { es: 'Marketing', en: 'Marketing' },
+    marketingDesc: {
+      es: 'Medición de campañas en redes sociales. Hoy no están en uso.',
+      en: 'Social media campaign measurement. Not in use today.',
     },
   },
 } as const
@@ -158,15 +203,6 @@ export const PRODUCTS: Product[] = [
     descEs: 'La porcelana más cercana al diente natural. Ultra-finas, hasta 0.3mm de grosor.',
     descEn: 'The porcelain closest to the natural tooth. Ultra-thin, down to 0.3mm thickness.',
     tag: 'Ultra-Fino',
-  },
-  {
-    id: 'hibridas',
-    image: '/img/hibridas.jpg',
-    titleEs: 'Carillas Híbridas',
-    titleEn: 'Hybrid Veneers',
-    descEs: 'La fusión entre resistencia y estética. Solución versátil para el clínico moderno.',
-    descEn: 'The fusion of strength and aesthetics. Versatile solution for the modern clinician.',
-    tag: 'Versátil',
   },
 ]
 
