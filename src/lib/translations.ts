@@ -139,6 +139,9 @@ export const ui = {
     terms: { es: 'Términos y condiciones', en: 'Terms and conditions' },
     cookiePrefs: { es: 'Preferencias de cookies', en: 'Cookie preferences' },
   },
+  sponsors: {
+    label: { es: 'Marcas con las que trabajamos', en: 'Brands we work with' },
+  },
   cookies: {
     title: { es: 'Tu privacidad', en: 'Your privacy' },
     text: {
