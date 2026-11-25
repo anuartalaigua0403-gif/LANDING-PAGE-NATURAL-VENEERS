@@ -14,6 +14,11 @@ export default function Navbar() {
   const T = useT()
   const pathname = usePathname()
   const onTraining = pathname?.startsWith('/entrena') ?? false
+  const onAcademy = pathname?.startsWith('/academia') ?? false
+  const academyCls = (base: string) =>
+    `${base} font-body font-semibold tracking-widest uppercase px-5 py-2.5 border transition-colors duration-300 ${
+      onAcademy ? 'bg-gold/15 text-gold-bright border-gold-bright' : 'text-gold border-gold/60 hover:border-gold-bright hover:text-gold-bright'
+    }`
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
@@ -44,12 +49,15 @@ export default function Navbar() {
           <span className="font-display text-xl text-gold tracking-[0.15em]">VENEERS</span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <div className="hidden xl:flex items-center gap-7">
           {navLinks.map((link) => (
             <Link href={link.href} key={link.href} className="font-body text-xs tracking-widest text-mist hover:text-gold transition-colors duration-300 uppercase">
               {link.label}
             </Link>
           ))}
+          <Link href="/academia" aria-current={onAcademy ? 'page' : undefined} className={academyCls("text-xs whitespace-nowrap")}>
+            {T(ui.nav.academy)}
+          </Link>
           <Link
             href="/entrena"
             aria-current={onTraining ? 'page' : undefined}
@@ -63,7 +71,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-6">
           <LanguageToggle />
-          <button className="lg:hidden flex flex-col gap-1.5 w-6" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" aria-expanded={menuOpen}>
+          <button className="xl:hidden flex flex-col gap-1.5 w-6" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" aria-expanded={menuOpen}>
             <span className={`block h-px bg-cream transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
             <span className={`block h-px bg-cream transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
             <span className={`block h-px bg-cream transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
@@ -75,13 +83,16 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden absolute top-full left-0 right-0 bg-obsidian/95 backdrop-blur-xl border-b border-gold/10 py-6 px-6 flex flex-col gap-5"
+          className="xl:hidden absolute top-full left-0 right-0 bg-obsidian/95 backdrop-blur-xl border-b border-gold/10 py-6 px-6 flex flex-col gap-5"
         >
           {navLinks.map((link) => (
             <Link href={link.href} key={link.href} onClick={() => setMenuOpen(false)} className="font-body text-sm tracking-widest text-mist hover:text-gold transition-colors duration-300 uppercase">
               {link.label}
             </Link>
           ))}
+          <Link href="/academia" onClick={() => setMenuOpen(false)} aria-current={onAcademy ? 'page' : undefined} className={academyCls('self-start text-sm')}>
+            {T(ui.nav.academy)}
+          </Link>
           <Link
             href="/entrena"
             onClick={() => setMenuOpen(false)}

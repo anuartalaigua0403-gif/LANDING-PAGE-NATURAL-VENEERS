@@ -12,7 +12,7 @@ import { openCookiePreferences } from '@/lib/consent'
 export default function Footer() {
   const T = useT()
   const year = new Date().getFullYear()
-  const isTraining = (usePathname() || '').startsWith('/entrena')
+  const isTraining = /^\/(entrena|academia)/.test(usePathname() || '')
   const waUrl = isTraining
     ? formatWhatsAppUrl(WA_FORMACION, WA_MSG_FORMACION)
     : formatWhatsAppUrl(WA_LAB, WA_MSG_LAB)
@@ -25,6 +25,7 @@ export default function Footer() {
     { href: '/#about', label: T(ui.nav.about) },
     { href: '/#contact', label: T(ui.nav.contact) },
     { href: '/entrena', label: T(ui.nav.training) },
+    { href: '/academia', label: T(ui.nav.academy) },
   ]
 
   return (
